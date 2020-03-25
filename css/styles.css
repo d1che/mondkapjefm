@@ -21,6 +21,11 @@ body {
   border-right: solid 10px #eeeeee;
 }
 
+.picca {
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
 audio {
   margin: 20px;
 }
@@ -41,11 +46,11 @@ audio {
     width: 100%;
   }
 
-  .intro {
-    width: auto;
-  }
-
   .picca {
     width: 100%;
+  }
+
+  .intro {
+    width: auto;
   }
 }

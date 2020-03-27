@@ -1,18 +1,14 @@
-import React { useEffect } from 'react';
+import React from 'react';
+import ReactPlayer from 'react-player';
 
 const Stream = (props) => {
-   let { status, volume } = props;
-
-   useEffect(() => {
-      // Update the document title using the browser API
-      document.title = `You clicked ${count} times`;
-   });
-
-   return(
-      <audio id="stream">
-        <source src="http://80.115.174.87:8000/?type=http" type="audio/mpeg" />
-      </audio>
-   );
+   return <ReactPlayer 
+      url='http://80.115.174.87:8000/?type=http' 
+      playing={props.status} 
+      volume={props.volume/100}
+      width='0'
+      height='0'
+   />
 }
 
 export default Stream;

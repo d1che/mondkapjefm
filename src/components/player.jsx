@@ -52,7 +52,7 @@ const Player = () => {
         <InlineBlock style={{width: '150px', paddingLeft: '1rem', paddingRight: '1rem'}}><Slider value={volume} onChange={updateVolume} aria-labelledby="continuous-slider" style={{ color: '#ffffff' }} /></InlineBlock>
         <InlineBlock><VolumeUp style={{ fontSize: '4rem' }} /></InlineBlock>
       </Volume>
-      <InlineBlock style={{ paddingLeft: '1rem', paddingRight: '2rem' }}>
+      <InlineBlock style={{ paddingLeft: '4rem', paddingRight: '4rem' }}>
         {
           playing ? 
           <Pause onClick={() => togglePlaying(false)}>

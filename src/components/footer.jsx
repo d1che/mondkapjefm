@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import variables from '../styles/variables';
 
+import Metadata from './metadata';
 import Player from './player';
 
 const FooterContainer = styled.div`

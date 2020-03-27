@@ -9,7 +9,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: "Mondkapje FM 2",
+    title: "Mondkapje FM",
     nutshell: "Zet je radio op 1.5 meter."
   },
 

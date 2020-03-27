@@ -44,8 +44,7 @@ audio {
 .announcement {
   display: inline-block;
   margin: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px;
   color: #ffcc00;
   background-color: #003499;
   border-radius: 25px;

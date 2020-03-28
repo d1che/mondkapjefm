@@ -34,6 +34,7 @@ const Footer = () => {
   return (
     <FooterContainer>
       <Logo src="../logo.svg"/>
+      <Metadata />
       <Player />
     </FooterContainer>
   );

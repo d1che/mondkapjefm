@@ -36,6 +36,11 @@ const GlobalStyle = createGlobalStyle`
   p {
     font-size: ${props => props.theme.fontSizeDefault};
   }
+
+  a {
+    color: ${props => props.theme.colorPrimaryLight};;
+    text-decoration: none;
+  }
 `;
 
 export default GlobalStyle;

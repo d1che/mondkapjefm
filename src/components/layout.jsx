@@ -7,6 +7,7 @@ import variables from '../styles/variables';
 
 import Footer from './footer';
 import FixedBackground from './fixedBackground';
+import PictureCredit from './pictureCredit';
 
 const Container = styled.div`
   padding: 4rem;
@@ -23,6 +24,7 @@ const Layout = ({ children }) => {
       <React.Fragment>
         <GlobalStyle />
         <FixedBackground />
+        <PictureCredit />
         <Container>
           {children}
         </Container>

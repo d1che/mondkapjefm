@@ -7,12 +7,36 @@ const CreditWrapper = styled.div`
   right: 1rem;
   color: ${props => props.theme.colorPrimaryDark};
   font-size: 12px;
+  text-align: right;
+`;
+
+const FirstLine = styled.span`
+  display block;
+`;
+
+const SecondLine = styled.span`
+  display: block;
 `;
 
 const PictureCredit = () => {
   return (
     <CreditWrapper>
-      Background by <a href="https://unsplash.com/@jakebradley" rel="noopener noreferrer" target="_blank">Jake Bradley</a> on <a href="https://unsplash.com/" rel="noopener noreferrer" target="_blank">Unsplash</a>
+      <FirstLine>
+      Background by <a 
+        href="https://unsplash.com/@jakebradley" 
+        rel="noopener noreferrer" 
+        target="_blank">
+          Jake Bradley
+        </a>
+      </FirstLine>
+      <SecondLine> 
+      on <a 
+        href="https://unsplash.com/"
+        rel="noopener noreferrer"
+        target="_blank">
+          Unsplash
+        </a>
+      </SecondLine>
     </CreditWrapper>
   );
 };

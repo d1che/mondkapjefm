@@ -9,6 +9,9 @@ const MetadataWrapper = styled.div`
 const Metadata = () => {
   const [currentSong, setCurrentSong] = useState('Geen informatie beschikbaar...');
 
+  fetch('http://10.0.1.30:8000/stats?json=1')
+  .then(res => console.log(res))
+
   return(
     <MetadataWrapper>
       Hoi

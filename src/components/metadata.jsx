@@ -41,15 +41,15 @@ const Metadata = () => {
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const dataFetch = setInterval(() => {
       fetch('https://stream.mondkapjefm.nl:8443/status-json.xsl')
       .then(r => r.json())
       .then(json => json.icestats)
       .then(icestats => setStats(icestats));
-    }, 1000)
+    }, 9000)
 
     return () => {
-      clearInterval(interval);
+      clearInterval(dataFetch);
     }
   }, [])
 

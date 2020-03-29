@@ -45,6 +45,7 @@ const Nutshell = styled.h2`
 `;
 
 const Home = () => {
+
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -58,6 +59,7 @@ const Home = () => {
 
   return (
     <Layout>
+      <BoatText />
       <TitleContainer>
         <Logo src="../logo.svg"/>
         <Title>{data.site.siteMetadata.title}</Title>

@@ -44,7 +44,8 @@ const Metadata = () => {
     const interval = setInterval(() => {
       fetch('https://stream.mondkapjefm.nl:8443/status-json.xsl')
       .then(r => r.json())
-      .then(r => {setStats(r)});
+      .then(json => json.icestats)
+      .then(icestats => setStats(icestats));
     }, 1000)
 
     return () => {
@@ -52,11 +53,11 @@ const Metadata = () => {
     }
   }, [])
 
-  const [announcement, songTitle] = stats ? stats.icestats.source.title.split('|') : ['', ''];
+  const [announcement, songTitle] = stats ? stats.source.title.split('|') : ['', ''];
 
   return(
     <MetadataWrapper>
-      <NowPlaying>{!announcement.startsWith('MondkapjeFM') ? `${announcement} - Now playing:` : ''}</NowPlaying>
+      {announcement !== '' && <NowPlaying>{!announcement.startsWith('MondkapjeFM') ? `${announcement} - Now playing:` : ''}</NowPlaying>}
       <SongTitle>{!announcement.startsWith('MondkapjeFM') ? songTitle : announcement}</SongTitle>
     </MetadataWrapper>
   );

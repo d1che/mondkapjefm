@@ -1,42 +1,37 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { graphql, useStaticQuery } from 'gatsby';
 
 import variables from '../styles/variables';
 
-const BoatTextWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 50%;
-  color: black;
-`;
-
 const Quote = styled.div`
-  position: relative;
+  position: absolute;
+  left: calc(47vw - 65px);
+  top: 43px;
   font-weight: bold;
   font-size: 2rem;
-`;
+  white-space: nowrap;
+  transform-origin: 0% 100%;
+  transform: rotate(-4deg);
+  color: black;
+`; 
 
 const PictureCredit = () => {
 
-  let windowWidth = window.innerWidth; 
-  let windowHeight = window.innerHeight;
-
-  useEffect(() => {
-    function handleResize() {
-      windowWidth = window.innerWidth;
-      windowHeight = window.innerHeight;
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          boatQuotes
+        }
+      }
     }
+  `);
 
-    window.addEventListener('resize', handleResize);
-  }, []);
-
-  console.log(windowWidth);
-  console.log(windowHeight);
+  const quote = data.site.siteMetadata.boatQuotes[Math.floor((Math.random() * data.site.siteMetadata.boatQuotes.length))];
 
   return (
-    <BoatTextWrapper>
-      <Quote>tief op!</Quote>
-    </BoatTextWrapper>
+    <Quote>{quote}</Quote>
   );
 };
 

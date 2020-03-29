@@ -7,8 +7,7 @@ const FixedBackground = styled.div`
   width: 100vw;
   height: 100vh;
   background-image: url(../img/background.jpg);
-  background-size: cover;
-  background-position: top;
+  background-position: 47% 0;
   background-attachment: fixed;
   z-index: -1;
   // Makes it so that the background image doesn't scroll with the page.

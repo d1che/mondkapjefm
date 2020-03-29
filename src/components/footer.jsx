@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import variables from '../styles/variables';
 
 import Metadata from './metadata';
@@ -22,18 +23,9 @@ const FooterContainer = styled.div`
   }
 `;
 
-const Logo = styled.img`
-  display: inline-block;
-  position: absolute;
-  bottom: 0;
-  left: 2rem;
-  height: 95%;
-`;
-
 const Footer = () => {
   return (
     <FooterContainer>
-      <Logo src="../logo.svg"/>
       <Metadata />
       <Player />
     </FooterContainer>

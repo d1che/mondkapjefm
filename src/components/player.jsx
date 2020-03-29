@@ -20,7 +20,7 @@ const PlayerContainer = styled.div`
 `;
 
 const Volume = styled.span`
-  @media only screen and (max-width: ${variables.screenWidth}) {
+  @media only screen and (max-width: calc(${variables.screenWidth} + 250px)) {
     display: none;
   }
 `;

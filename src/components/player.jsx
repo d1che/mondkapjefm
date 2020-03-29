@@ -13,14 +13,16 @@ const PlayerContainer = styled.div`
   position: absolute;
   right: 0;
   top: 23%;
+  border-left: 1px solid ${props => props.theme.colorBackgroundDark}33;
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     top: 11%;
+    border-left: none;
   }
 `;
 
 const Volume = styled.span`
-  @media only screen and (max-width: calc(${variables.screenWidth} + 250px)) {
+  @media only screen and (max-width: ${variables.screenWidth}) {
     display: none;
   }
 `;
@@ -50,7 +52,8 @@ const Player = () => {
     <PlayerContainer>
       <Stream status={playing} volume={volume} />
       <Volume>
-        <InlineBlock>
+        <InlineBlock
+          style={{paddingLeft: '2rem'}}>
           <VolumeDown 
             style={{ fontSize: '4rem' }} 
             onClick={mute}/>

@@ -8,14 +8,14 @@ const MetadataWrapper = styled.div`
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 2rem;
-  font-size: 24px;
+  left: 4rem;
+  font-size: 2.4rem;
   padding-right 40rem;
 
-  @media only screen and (max-width: calc(${variables.screenWidth} + 250px)) {
-    font-size: 14px;
+  @media only screen and (max-width: ${variables.screenWidth}) {
+    font-size: 1.4rem;
     left: 2rem;
-    padding-right 5rem;
+    padding-right 1rem;
   }
 `;
 
@@ -24,7 +24,7 @@ const NowPlaying = styled.div`
   margin-top: 4.4rem;
 
   @media only screen and (max-width: ${variables.screenWidth}) {
-    margin-top: 3.3rem;
+    margin-top: 3.2rem;
   }
 `;
 
@@ -33,7 +33,7 @@ const SongTitle = styled.div`
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     word-wrap: break-word;
-    max-width: 23rem;
+    width: 35rem;
   }
 `;
 
@@ -56,10 +56,8 @@ const Metadata = () => {
 
   return(
     <MetadataWrapper>
-      {(announcement !== '' && !announcement.startsWith('MondkapjeFM')) && 
-      <NowPlaying>{`${announcement} - Now playing:`}</NowPlaying>}
-      {songTitle !== '' && 
-      <SongTitle>{!announcement.startsWith('MondkapjeFM') ? songTitle : announcement}</SongTitle>}
+      <NowPlaying>{!announcement.startsWith('MondkapjeFM') ? `${announcement} - Now playing:` : ''}</NowPlaying>
+      <SongTitle>{!announcement.startsWith('MondkapjeFM') ? songTitle : announcement}</SongTitle>
     </MetadataWrapper>
   );
 };

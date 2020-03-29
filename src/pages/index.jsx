@@ -5,6 +5,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import variables from '../styles/variables';
 
 import Layout from '../components/layout';
+import BoatText from '../components/boatText';
 
 const TitleContainer = styled.div`
   position: absolute;

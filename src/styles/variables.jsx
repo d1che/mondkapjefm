@@ -1,5 +1,5 @@
 const variables = {
-  screenWidth: '500px',
+  screenWidth: '750px',
   footerHeight: '15rem',
   footerHeightMobile: '10rem',
   fontSizeNavItem: '2rem', 

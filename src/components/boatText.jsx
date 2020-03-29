@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
-
-import variables from '../styles/variables';
 
 const Quote = styled.div`
   position: absolute;
@@ -11,6 +9,8 @@ const Quote = styled.div`
   font-weight: bold;
   font-size: 2rem;
   white-space: nowrap;
+  overflow: hidden;
+  max-width: calc(53vw + 65px);
   transform-origin: 0% 100%;
   transform: rotate(-4deg);
   color: black;
@@ -28,7 +28,8 @@ const PictureCredit = () => {
     }
   `);
 
-  const quote = data.site.siteMetadata.boatQuotes[Math.floor((Math.random() * data.site.siteMetadata.boatQuotes.length))];
+  const index = Math.floor((Math.random() * data.site.siteMetadata.boatQuotes.length))
+  const quote = data.site.siteMetadata.boatQuotes ? data.site.siteMetadata.boatQuotes[index] : '';
 
   return (
     <Quote>{quote}</Quote>

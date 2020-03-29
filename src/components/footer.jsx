@@ -13,8 +13,8 @@ const FooterContainer = styled.div`
   width: 100%;
   background-image: linear-gradient(
     to right,
-    ${props => props.theme.colorPrimaryLight}55,
-    ${props => props.theme.colorPrimaryDark}ee
+    ${props => props.theme.colorPrimaryLight}99,
+    ${props => props.theme.colorPrimaryDark}ff
   );
   backdrop-filter: blur(4px);
 

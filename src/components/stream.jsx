@@ -8,6 +8,7 @@ const Stream = (props) => {
       volume={props.volume/100}
       width='0'
       height='0'
+      playsinline
    />
 };
 

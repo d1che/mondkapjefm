@@ -46,7 +46,7 @@ const Metadata = () => {
       .then(r => r.json())
       .then(json => json.icestats)
       .then(icestats => setStats(icestats));
-    }, 9000)
+    }, 1000)
 
     return () => {
       clearInterval(dataFetch);

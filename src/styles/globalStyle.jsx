@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   // Main font
-  @import url('https://fonts.googleapis.com/css?family=DM+Sans:400,700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400&display=swap');
 
   *,
   *::after,
@@ -24,7 +24,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    margin-bottom: 2.5rem;
     color: ${props => props.theme.colorTitle};
     font-size 3rem;
   }

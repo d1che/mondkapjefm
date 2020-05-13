@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import variables from '../styles/variables';
@@ -16,7 +16,8 @@ const FooterContainer = styled.div`
     ${props => props.theme.colorPrimaryLight}99,
     ${props => props.theme.colorPrimaryDark}ff
   );
-  backdrop-filter: blur(4px);
+  border-top: 1px solid ${props => props.theme.colorPrimaryDark};
+  backdrop-filter: blur(5px);
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     height: ${variables.footerHeightMobile};
@@ -24,10 +25,25 @@ const FooterContainer = styled.div`
 `;
 
 const Footer = () => {
+  const [stats, setStats] = useState(null);
+
+  useEffect(() => {
+    const dataFetch = setInterval(() => {
+      fetch('https://stream.mondkapjefm.nl:8443/status-json.xsl')
+      .then(r => r.json())
+      .then(json => json.icestats)
+      .then(icestats => setStats(icestats));
+    }, 500)
+
+    return () => {
+      clearInterval(dataFetch);
+    }
+  }, [])
+
   return (
     <FooterContainer>
-      <Metadata />
-      <Player />
+      <Metadata stats={stats}/>
+      <Player stats={stats}/>
     </FooterContainer>
   );
 };

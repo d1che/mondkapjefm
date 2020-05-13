@@ -21,24 +21,32 @@ const PlayerContainer = styled.div`
   }
 `;
 
+const InlineBlock = styled.span`
+  display: inline-block;
+  vertical-align: middle;
+`;
+
 const Volume = styled.span`
   @media only screen and (max-width: ${variables.screenWidth}) {
     display: none;
   }
 `;
 
-const InlineBlock = styled.span`
-  display: inline-block;
-  vertical-align: middle;
-`;
-
 const Play = styled.span`
+  transition: color .5s;
+  &:hover {
+    color: ${props => props.theme.colorPrimaryLight};
+  }
 `;
 
 const Pause = styled.span`
+  transition: color .5s;
+  &:hover {
+    color: ${props => props.theme.colorPrimaryLight};
+  }
 `;
 
-const Player = () => {
+const Player = ({stats}) => {
   const [playing, togglePlaying] = useState(false);
   const [volume, setVolume] = useState(70);
 
@@ -48,42 +56,49 @@ const Player = () => {
 
   const mute = () => setVolume(0)
 
-  return (
-    <PlayerContainer>
-      <Stream status={playing} volume={volume} />
-      <Volume>
-        <InlineBlock
-          style={{paddingLeft: '2rem'}}>
-          <VolumeDown 
-            style={{ fontSize: '4rem' }} 
-            onClick={mute}/>
+  if (stats) {
+    return (
+      <PlayerContainer>
+        <Stream status={playing} volume={volume} />
+        <Volume>
+          <InlineBlock
+            style={{paddingLeft: '2rem'}}>
+            <VolumeDown 
+              style={{ fontSize: '4rem' }} 
+              onClick={mute}/>
+          </InlineBlock>
+          <InlineBlock 
+            style={{width: '150px', paddingLeft: '1rem', paddingRight: '1rem'}}>
+            <Slider 
+              value={volume} 
+              onChange={updateVolume} 
+              aria-labelledby="continuous-slider" 
+              style={{ color: '#ffffff' }} />
+          </InlineBlock>
+          <InlineBlock>
+            <VolumeUp style={{ fontSize: '4rem' }} />
+          </InlineBlock>
+        </Volume>
+        <InlineBlock style={{ paddingLeft: '4rem', paddingRight: '4rem' }}>
+          {
+            playing ? 
+            <Pause onClick={() => togglePlaying(false)}>
+              <PauseCircleFilledIcon style={{ fontSize: '8rem' }} />
+            </Pause> 
+            : 
+            <Play onClick={() => togglePlaying(true)}>
+              <PlayCircleFilledIcon style={{ fontSize: '8rem' }}/>
+            </Play>
+          }
         </InlineBlock>
-        <InlineBlock 
-          style={{width: '150px', paddingLeft: '1rem', paddingRight: '1rem'}}>
-          <Slider 
-            value={volume} 
-            onChange={updateVolume} 
-            aria-labelledby="continuous-slider" 
-            style={{ color: '#ffffff' }} />
-        </InlineBlock>
-        <InlineBlock>
-          <VolumeUp style={{ fontSize: '4rem' }} />
-        </InlineBlock>
-      </Volume>
-      <InlineBlock style={{ paddingLeft: '4rem', paddingRight: '4rem' }}>
-        {
-          playing ? 
-          <Pause onClick={() => togglePlaying(false)}>
-            <PauseCircleFilledIcon style={{ fontSize: '8rem' }} />
-          </Pause> 
-          : 
-          <Play onClick={() => togglePlaying(true)}>
-            <PlayCircleFilledIcon style={{ fontSize: '8rem' }}/>
-          </Play>
-        }
-      </InlineBlock>
-    </PlayerContainer>
-  );
+      </PlayerContainer>
+    );
+  } else {
+    return(
+      <PlayerContainer>
+      </PlayerContainer>
+    )
+  }
 };
 
 export default Player;

@@ -5,9 +5,11 @@ import GlobalStyle from '../styles/globalStyle';
 import themes from '../themes';
 import variables from '../styles/variables';
 
-import Footer from './footer';
 import FixedBackground from './fixedBackground';
+import SocialBar from '../components/socialBar';
 import PictureCredit from './pictureCredit';
+import Logo from '../components/logo';
+import Footer from './footer';
 
 const Container = styled.div`
   padding: 4rem;
@@ -24,10 +26,12 @@ const Layout = ({ children }) => {
       <React.Fragment>
         <GlobalStyle />
         <FixedBackground />
+        <SocialBar />
         <PictureCredit />
         <Container>
           {children}
         </Container>
+        <Logo />
         <Footer />
       </React.Fragment>
     </ThemeProvider>

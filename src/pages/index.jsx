@@ -9,39 +9,40 @@ import BoatText from '../components/boatText';
 
 const TitleContainer = styled.div`
   position: absolute;
-  bottom: 30%;
+  left: 20rem;
+  bottom: 18rem;
   width: 70%;
   font-family: ${props => props.theme.secondaryFont};
   font-weight: 700;
-  text-shadow: 1px 1px 1px ${props => props.theme.colorBackgroundDark};
+  text-shadow: 2px 2px 1px ${props => props.theme.colorBackgroundDark};
 
-  @media only screen and (max-width: calc(${variables.screenWidth} + 250px)) {
-    bottom: 25%;
+  @media only screen and (max-width: calc(${variables.screenWidth} + 400px)) {
+    top: 22rem;
+    left: 4rem;
+    bottom: unset;
   }
-`;
-
-const Logo = styled.img`
-  display: block;
-  position: relative;
 `;
 
 const Title = styled.h1`
   color: ${props => props.theme.colorBackgroundDark};
   font-size: 5.5rem;
   letter-spacing: 0.1rem;
-  //text-transform: uppercase;
   text-shadow: 4px 4px 1px ${props => props.theme.colorPrimaryLight};
 
-  @media only screen and (max-width: calc(${variables.screenWidth} + 250px)) {
-    font-size: 4rem;
-    margin-bottom: 0;
+  @media only screen and (max-width: calc(${variables.screenWidth} + 400px)) {
+    font-size: calc(3rem + 2vw);
   }
 `;
 
 const Nutshell = styled.h2`
   font-size: 3rem;
+  font-style: italic;
   letter-spacing: 0.3rem;
   word-wrap: normal;
+
+  @media only screen and (max-width: calc(${variables.screenWidth} + 400px)) {
+    font-size: calc(1.3rem + 1.3vw);
+  }
 `;
 
 const Home = () => {
@@ -61,7 +62,6 @@ const Home = () => {
     <Layout>
       <BoatText />
       <TitleContainer>
-        <Logo src="../logo.svg"/>
         <Title>{data.site.siteMetadata.title}</Title>
         <Nutshell>{data.site.siteMetadata.nutshell}</Nutshell>
       </TitleContainer>

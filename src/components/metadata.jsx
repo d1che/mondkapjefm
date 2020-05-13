@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import variables from '../styles/variables';
@@ -37,30 +37,37 @@ const SongTitle = styled.div`
   }
 `;
 
-const Metadata = () => {
-  const [stats, setStats] = useState(null);
+const Offline = styled.div`
+  margin-top: 5rem;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: ${props => props.theme.colorTextError};
 
-  useEffect(() => {
-    const dataFetch = setInterval(() => {
-      fetch('https://stream.mondkapjefm.nl:8443/status-json.xsl')
-      .then(r => r.json())
-      .then(json => json.icestats)
-      .then(icestats => setStats(icestats));
-    }, 1000)
+  @media only screen and (max-width: ${variables.screenWidth}) {
+    margin-top: 3.5rem;
+    font-size: 2rem;
+  }
+`;
 
-    return () => {
-      clearInterval(dataFetch);
-    }
-  }, [])
-
+const Metadata = ({stats}) => {
   const [announcement, songTitle] = stats ? stats.source.title.split('|') : ['', ''];
 
-  return(
-    <MetadataWrapper>
-      {announcement !== '' && <NowPlaying>{!announcement.startsWith('MondkapjeFM') ? `${announcement} - Now playing:` : ''}</NowPlaying>}
-      <SongTitle>{!announcement.startsWith('MondkapjeFM') ? songTitle : announcement}</SongTitle>
-    </MetadataWrapper>
-  );
+  if (stats) {
+    return(
+      <MetadataWrapper>
+        <NowPlaying>{!announcement.startsWith('Zet je radio') ? `${announcement} - Now playing:` : 'Mondkapje FM'}</NowPlaying>
+        <SongTitle>{!announcement.startsWith('Zet je radio') ? songTitle : 'Zet je radio op 1.5 meter!'}</SongTitle>
+      </MetadataWrapper>
+    );
+  } else {
+    return(
+      <MetadataWrapper>
+        <Offline>
+          Op dit moment zijn we off air
+        </Offline>
+      </MetadataWrapper>
+    );
+  }
 };
 
 export default Metadata;

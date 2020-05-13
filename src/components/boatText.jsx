@@ -14,9 +14,10 @@ const Quote = styled.div`
   transform-origin: 0% 100%;
   transform: rotate(-4deg);
   color: black;
+  z-index -1;
 `; 
 
-const PictureCredit = () => {
+const BoatText = () => {
 
   const data = useStaticQuery(graphql`
     query {
@@ -36,4 +37,4 @@ const PictureCredit = () => {
   );
 };
 
-export default PictureCredit;
+export default BoatText;

@@ -37,37 +37,14 @@ const SongTitle = styled.div`
   }
 `;
 
-const Offline = styled.div`
-  margin-top: 5rem;
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: ${props => props.theme.colorTextError};
-
-  @media only screen and (max-width: ${variables.screenWidth}) {
-    margin-top: 3.5rem;
-    font-size: 2rem;
-  }
-`;
-
-const Metadata = ({stats}) => {
-  const [announcement, songTitle] = stats ? stats.source.title.split('|') : ['', ''];
-
-  if (stats) {
-    return(
-      <MetadataWrapper>
-        <NowPlaying>{!announcement.startsWith('Zet je radio') ? `${announcement} - Now playing:` : 'Mondkapje FM'}</NowPlaying>
-        <SongTitle>{!announcement.startsWith('Zet je radio') ? songTitle : 'Zet je radio op 1.5 meter!'}</SongTitle>
-      </MetadataWrapper>
-    );
-  } else {
-    return(
-      <MetadataWrapper>
-        <Offline>
-          Op dit moment zijn we off air
-        </Offline>
-      </MetadataWrapper>
-    );
-  }
+const Metadata = ({data}) => {
+  const [announcement, songTitle] = data.icestats.source.title.split('|');
+  return(
+    <MetadataWrapper>
+      <NowPlaying>{!announcement.startsWith('Zet je radio') ? `${announcement} | Now playing:` : 'Mondkapje FM'}</NowPlaying>
+      <SongTitle>{!announcement.startsWith('Zet je radio') ? songTitle : 'Zet je radio op 1.5 meter!'}</SongTitle>
+    </MetadataWrapper>
+  );
 };
 
 export default Metadata;

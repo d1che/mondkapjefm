@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import variables from '../styles/variables';
 
+import SvgLogo from './svg/svgLogo';
+
 /*const SneezeAnimation = keyframes`
   50% {
     transform: translateY(1.2rem) rotateZ(10deg);
@@ -37,7 +39,7 @@ const Logo = () => {
 
   return (
     <LogoContainer>
-      <img src="../logo.svg" alt="Mondkapje FM"/>
+      <SvgLogo />
     </LogoContainer>
   );
 };

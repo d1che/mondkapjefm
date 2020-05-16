@@ -26,6 +26,7 @@ const FooterContainer = styled.div`
 
 const Offline = styled.div`
   margin-top: 5rem;
+  margin-left: 4rem;
   font-size: 3.5rem;
   font-weight: 700;
   color: ${props => props.theme.colorTextError};

@@ -7,9 +7,10 @@ const themes = {
     colorBackgroundSocialBar: '#e9f6f7',
     
     colorText: '#fdf0fd',
-    colorTextError: '#d63300',
+    colorTextError: '#dd850f',
     colorTitle: '#eee8ee',
-    colorNowPlaying: '#020202',
+    colorAnnouncement: '#020202',
+    colorNowPlaying: '#fdf0fd',
     colorSongTitle: '#fdf0fd',
 
     colorMediaButton: '#202020',

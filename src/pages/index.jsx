@@ -21,6 +21,10 @@ const TitleContainer = styled.div`
     left: 4rem;
     bottom: unset;
   }
+
+  @media only screen and (max-width: calc(${variables.screenWidth})) {
+    left: 2rem;
+  }
 `;
 
 const Title = styled.h1`

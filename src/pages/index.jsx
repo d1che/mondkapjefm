@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import variables from '../styles/variables';
 
 import Layout from '../components/layout';
+import BoatLine from '../components/boatLine';
 import BoatText from '../components/boatText';
 
 const TitleContainer = styled.div`
@@ -50,6 +51,7 @@ const Nutshell = styled.h2`
 `;
 
 const Home = () => {
+  const [index, setIndex] = useState(null);
 
   const data = useStaticQuery(graphql`
     query {
@@ -57,14 +59,22 @@ const Home = () => {
         siteMetadata {
           title
           nutshell
+          boatQuotes
         }
       }
     }
   `);
 
+  useEffect(() => {
+    setIndex(Math.floor(Math.random() * data.site.siteMetadata.boatQuotes.length));
+  }, [data.site.siteMetadata.boatQuotes.length]);
+
+  const quote = index != null && data.site.siteMetadata.boatQuotes ? data.site.siteMetadata.boatQuotes[index] : '';
+
   return (
     <Layout>
-      <BoatText />
+      {index != null && <BoatLine/>}
+      {index != null && <BoatText quote={quote}/>}
       <TitleContainer>
         <Title>{data.site.siteMetadata.title}</Title>
         <Nutshell>{data.site.siteMetadata.nutshell}</Nutshell>

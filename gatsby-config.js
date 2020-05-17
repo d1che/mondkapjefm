@@ -30,7 +30,7 @@ module.exports = {
       'hou op',
       'ga weg',
       'ik was hier eerst',
-      'marloes, hou je mond!',
+      'Marloes, hou je mond!',
       'doei',
       'WEH?',
       'er zit knoflook in m\'n reet, FEEST!',

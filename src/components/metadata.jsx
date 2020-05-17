@@ -10,7 +10,6 @@ const MetadataWrapper = styled.div`
   bottom: 0;
   left: 4rem;
   font-size: 2.4rem;
-  padding-right 40rem;
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     font-size: calc(0.8rem + 1.1vw);
@@ -31,16 +30,19 @@ const NowPlayingWrapper = styled.div`
 
 const Announcement = styled.span`
   padding-top: .5rem;
-  padding-right: .5rem;
+  padding-right: 1rem;
   color: ${props => props.theme.colorAnnouncement};
   font-weight: bold;
   border-right: 1px solid ${props => props.theme.colorPrimaryDark};
+  text-shadow: .1rem .1rem ${props => props.theme.colorPrimaryLight};
 `;
 
 const NowPlaying = styled.span`
   padding-top: .5rem;
-  padding-left: .5rem;
+  padding-left: 1rem;
+  font-weight: bold;
   color: ${props => props.theme.colorNowPlaying};
+  text-shadow: .1rem .1rem ${props => props.theme.colorPrimaryDark};
 `;
 
 const Artist = styled.div`
@@ -49,6 +51,7 @@ const Artist = styled.div`
   font-weight: bold;
   padding-bottom: .3rem;
   border-bottom: 1px solid ${props => props.theme.colorPrimaryDark};
+  text-shadow: .1rem .1rem ${props => props.theme.colorPrimaryDark};
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     margin-top: calc(2.7rem - 2vw);
@@ -60,6 +63,7 @@ const Title = styled.div`
   color: ${props => props.theme.colorSongTitle};
   font-style: italic;
   padding-top: .2rem;
+  text-shadow: .1rem .1rem ${props => props.theme.colorPrimaryDark};
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     word-wrap: break-word;
@@ -71,6 +75,7 @@ const Ident = styled.div`
   font-size: 3rem;
   font-weight: bold;
   color: ${props => props.theme.colorPrimaryDark};
+  text-shadow: .1rem .1rem ${props => props.theme.colorBackgroundDark};
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     margin-top: 2rem;
@@ -81,6 +86,7 @@ const Ident = styled.div`
 const Slogan = styled.div`
   font-size: 2rem;
   color: ${props => props.theme.colorSongTitle};
+  text-shadow: .1rem .1rem ${props => props.theme.colorPrimaryDark};
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     font-size: 1.5rem;

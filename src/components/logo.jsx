@@ -13,13 +13,13 @@ const SneezeAnimation = keyframes`
 
 const LogoContainer = styled.div`
   position: absolute;
-  bottom: 13.5rem;
+  bottom: 14.5rem;
   left: 4rem;
   transform-origin: bottom right;
   animation: ${SneezeAnimation} 0.2s ease-in-out;
 
   @media only screen and (max-width: ${variables.screenWidth}) {
-    bottom: calc(${variables.footerHeightMobile} - 1.5rem);
+    bottom: calc(${variables.footerHeightMobile} - .5rem);
     left: 2rem;
   }
 `;

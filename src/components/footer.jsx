@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner'
 
 import variables from '../styles/variables';
 
@@ -36,6 +38,21 @@ const FooterContainer = styled.div`
   }
 `;
 
+const Loading = styled.div`
+  position: absolute;
+  display: inline-block;
+  top: 3.5rem;
+  left: 50%;
+  transform: translate(-50%);
+  padding-left: .4rem;
+  padding-right: .3rem;
+
+  @media only screen and (max-width: ${variables.screenWidth}) {
+    top: 1rem;
+    font-size: 2rem;
+  }
+`;
+
 const Offline = styled.div`
   position: absolute;
   display: inline-block;
@@ -65,50 +82,64 @@ const DEFAULT_DATA = {
   },
 }
 
-const Footer = () =>  {
+const Footer = (props) =>  {
   const [data, setData] = useState(DEFAULT_DATA);
-  const [firstRun, setFirstRun] = useState(true);
-
-  useEffect(() => {
-    //Get data immediately for the first time
-    if(firstRun) {
-      fetchData();
-      setFirstRun(false);
-    };
-    const dataFetch = setInterval(fetchData, 500)
-
-    return () => {
-      clearInterval(dataFetch);
-    }
-  }, [firstRun])
+  const [offline, setOffline] = useState(false);
+  let timeout = 0;
 
   const fetchData = async () => {    
     try {
       const response = await fetch('https://stream.mondkapjefm.nl:8443/status-json.xsl');
       const json = await response.json();
       // If this is the first run, set the data immediately
-      firstRun ? setData(json) : setTimeout(setData, 5000, json);
+      setTimeout(setData, timeout, json);
+      setOffline(false);
     } catch(err) {
       setData(DEFAULT_DATA);
+      setOffline(true);
       console.warn(err);
     }
   }
 
-  if(data.icestats != null && 
-     data.icestats.source != null &&
-     data.icestats.source.title !== 'empty') {
-    return(
-      <FooterContainer>
-        <Metadata data={data} />
-        <Player />
-      </FooterContainer>
-    );
-  } else {
+  //Get data immediately for the first time
+  fetchData();
+  timeout = 6000;
+
+  useEffect(() => {
+    const dataFetch = setInterval(fetchData, 500)
+
+    return () => {
+      clearInterval(dataFetch);
+    }
+  })
+
+  if (offline) {
     return (
       <FooterContainer offline>
         <Offline>
           Op dit moment is de stream offline.
         </Offline>
+      </FooterContainer>
+    );
+  } else if(data.icestats != null && 
+     data.icestats.source != null &&
+     data.icestats.source.title !== 'empty') {
+    return(
+      <FooterContainer>
+        <Metadata data={data} />
+        <Player theme={props.theme} />
+      </FooterContainer>
+    );
+  } else {
+    return (
+      <FooterContainer>
+        <Loading>
+          <Loader 
+            type='TailSpin'
+            color={props.theme.colorText}
+            height={80}
+            width={80} />
+        </Loading>
       </FooterContainer>
     );
   }

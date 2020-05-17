@@ -4,6 +4,8 @@ import { VolumeDown, VolumeUp } from '@material-ui/icons';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import Slider from '@material-ui/core/Slider';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner'
 
 import variables from '../styles/variables';
 
@@ -13,11 +15,19 @@ const PlayerContainer = styled.div`
   position: absolute;
   right: 0;
   top: 23%;
-  border-left: 1px solid ${props => props.theme.colorBackgroundDark}33;
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     top: 11%;
-    border-left: none;
+  }
+`;
+
+const StyledLoader = styled(Loader)`
+  display: inline;
+  position: absolute;
+  left: -10rem;
+
+  @media only screen and (max-width: ${variables.screenWidth}) {
+    display: none;
   }
 `;
 
@@ -27,8 +37,24 @@ const InlineBlock = styled.span`
 `;
 
 const Volume = styled.span`
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+  border-left: 1px solid ${props => props.theme.colorPrimaryLight};
+
   @media only screen and (max-width: ${variables.screenWidth}) {
     display: none;
+  }
+`;
+
+const PlaybackButtonsWrapper = styled.span`
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 4rem;
+  margin-right: 4rem;
+
+  @media only screen and (max-width: ${variables.screenWidth}) {
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 `;
 
@@ -46,7 +72,7 @@ const Pause = styled.span`
   }
 `;
 
-const Player = () => {
+const Player = ({theme}) => {
   const [playing, togglePlaying] = useState(false);
   const [volume, setVolume] = useState(70);
 
@@ -59,11 +85,16 @@ const Player = () => {
   return (
     <PlayerContainer>
       <Stream status={playing} volume={volume} />
+      {playing && <StyledLoader
+        type='Bars'
+        color={theme.colorText}
+        height={80}
+        width={80} />}
       <Volume>
         <InlineBlock
           style={{paddingLeft: '2rem'}}>
           <VolumeDown 
-            style={{ fontSize: '4rem' }} 
+            style={{fontSize: '4rem'}} 
             onClick={mute}/>
         </InlineBlock>
         <InlineBlock 
@@ -72,24 +103,24 @@ const Player = () => {
             value={volume} 
             onChange={updateVolume} 
             aria-labelledby="continuous-slider" 
-            style={{ color: '#ffffff' }} />
+            style={{color: '#ffffff'}} />
         </InlineBlock>
         <InlineBlock>
-          <VolumeUp style={{ fontSize: '4rem' }} />
+          <VolumeUp style={{fontSize: '4rem'}} />
         </InlineBlock>
       </Volume>
-      <InlineBlock style={{ paddingLeft: '4rem', paddingRight: '4rem' }}>
+      <PlaybackButtonsWrapper>
         {
           playing ? 
           <Pause onClick={() => togglePlaying(false)}>
-            <PauseCircleFilledIcon style={{ fontSize: '8rem' }} />
+            <PauseCircleFilledIcon style={{fontSize: '8rem'}} />
           </Pause> 
           : 
           <Play onClick={() => togglePlaying(true)}>
-            <PlayCircleFilledIcon style={{ fontSize: '8rem' }}/>
+            <PlayCircleFilledIcon style={{fontSize: '8rem'}}/>
           </Play>
         }
-      </InlineBlock>
+      </PlaybackButtonsWrapper>
     </PlayerContainer>
   );
 };

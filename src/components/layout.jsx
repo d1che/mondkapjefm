@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
           {children}
         </Container>
         <Logo />
-        <Footer />
+        <Footer theme={themes.main}/>
       </React.Fragment>
     </ThemeProvider>
   );

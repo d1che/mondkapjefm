@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import variables from '../styles/variables';
 
-import Emoji from './emoji';
-
 const MetadataWrapper = styled.div`
   display: inline-block;
   position: absolute;

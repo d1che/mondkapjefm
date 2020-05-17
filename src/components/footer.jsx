@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
@@ -74,44 +74,36 @@ const Offline = styled.div`
   }
 `;
 
-const DEFAULT_DATA = {
-  icestats: {
-    source: {
-      title: 'empty',
-    },
-  },
-}
-
 const Footer = (props) =>  {
-  const [data, setData] = useState(DEFAULT_DATA);
+  const [data, setData] = useState(null);
   const [offline, setOffline] = useState(false);
-  let timeout = 0;
+  const timeout = useRef(0);
 
-  const fetchData = async () => {    
+  const fetchData = async () => {
     try {
       const response = await fetch('https://stream.mondkapjefm.nl:8443/status-json.xsl');
       const json = await response.json();
       // If this is the first run, set the data immediately
-      setTimeout(setData, timeout, json);
+      setTimeout(setData, timeout.current, json);
+      timeout.current = 6000;
       setOffline(false);
     } catch(err) {
-      setData(DEFAULT_DATA);
       setOffline(true);
       console.warn(err);
     }
   }
 
-  //Get data immediately for the first time
-  fetchData();
-  timeout = 6000;
-
   useEffect(() => {
-    const dataFetch = setInterval(fetchData, 500)
+    //Get data immediately for the first time
+    fetchData().then();
+    const dataFetch = setInterval(fetchData, 500);
 
     return () => {
       clearInterval(dataFetch);
     }
-  })
+  }, []);
+
+  console.log({data});
 
   if (offline) {
     return (
@@ -121,7 +113,10 @@ const Footer = (props) =>  {
         </Offline>
       </FooterContainer>
     );
-  } else if(data.icestats != null && 
+  }
+    
+  if(data != null &&
+     data.icestats != null && 
      data.icestats.source != null &&
      data.icestats.source.title !== 'empty') {
     return(
@@ -130,19 +125,19 @@ const Footer = (props) =>  {
         <Player theme={props.theme} />
       </FooterContainer>
     );
-  } else {
-    return (
-      <FooterContainer>
-        <Loading>
-          <Loader 
-            type='TailSpin'
-            color={props.theme.colorText}
-            height={80}
-            width={80} />
-        </Loading>
-      </FooterContainer>
-    );
   }
+
+  return (
+    <FooterContainer>
+      <Loading>
+        <Loader 
+          type='TailSpin'
+          color={props.theme.colorText}
+          height={80}
+          width={80} />
+      </Loading>
+    </FooterContainer>
+  );
 };
 
 export default Footer;

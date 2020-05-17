@@ -103,8 +103,6 @@ const Footer = (props) =>  {
     }
   }, []);
 
-  console.log({data});
-
   if (offline) {
     return (
       <FooterContainer offline>

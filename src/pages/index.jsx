@@ -50,7 +50,7 @@ const Nutshell = styled.h2`
   }
 `;
 
-const Home = () => {
+const Home = ({ children }) => {
   const [index, setIndex] = useState(null);
 
   const data = useStaticQuery(graphql`

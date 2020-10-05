@@ -12,7 +12,12 @@ const Quote = styled.div`
   max-width: calc(53vw + 6.5rem);
   transform-origin: 0% 100%;
   transform: rotate(-4deg);
-  color: black;
+  color: ${props => props.theme.colorText};
+  text-shadow:
+   -1px -1px 0 ${props => props.theme.colorBackgroundDark},  
+    1px -1px 0 ${props => props.theme.colorBackgroundDark},
+    -1px 1px 0 ${props => props.theme.colorBackgroundDark},
+     1px 1px 0 ${props => props.theme.colorBackgroundDark};
   z-index -1;
 `;
 

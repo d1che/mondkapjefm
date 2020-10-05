@@ -4,10 +4,13 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 
 const IconContainer = styled.div`
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background-color: ${props => props.theme.colorBackgroundSocialBar};
-  box-shadow: 0 0 15px ${props => props.theme.colorBackgroundSocialBar};
+  top: 0rem;
+  right: 0rem;
+  padding-top: 1.2rem;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  background: radial-gradient(${props => props.theme.colorBackgroundSocialBar} 30%, ${props => props.theme.colorPrimaryDark}00 70%);
 
   a {
     transition: color .5s;

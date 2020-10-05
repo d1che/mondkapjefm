@@ -20,19 +20,35 @@ const Container = styled.div`
   }
 `;
 
+const getSeason = () => {
+
+  let month = new Date().getMonth();
+
+  if (month >= 2 && month < 5) {
+    return "spring";
+  } else if (month >= 5 && month < 8) {
+    return "summer";
+  } else if (month >= 8 && month < 10) {
+    return "autumn";
+  } else {
+    return "winter";
+  };
+};
+
 const Layout = ({ children }) => {
+
   return (
-    <ThemeProvider theme={themes.main}>
+    <ThemeProvider theme={themes.autumn}>
       <React.Fragment>
         <GlobalStyle />
-        <FixedBackground />
+        <FixedBackground/>
         <SocialBar />
         <PictureCredit />
-        <Container>
+        <Container theme={themes.autumn}>
           {children}
         </Container>
         <Logo />
-        <Footer theme={themes.main}/>
+        <Footer theme={themes.autumn}/>
       </React.Fragment>
     </ThemeProvider>
   );

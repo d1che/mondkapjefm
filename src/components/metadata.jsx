@@ -102,8 +102,8 @@ const Metadata = ({data}) => {
       <MetadataWrapper>
         <NowPlayingWrapper>
           <Announcement>{dj}</Announcement>
-          <NowPlaying>Now playing: </NowPlaying>
-          <Announcement>{playlist}</Announcement>
+          <NowPlaying>Now playing:</NowPlaying>
+          <Announcement style={{paddingLeft: '1rem'}}>{playlist}</Announcement>
         </NowPlayingWrapper>
         <Artist>{artist}</Artist>
         <Title>{title}</Title>

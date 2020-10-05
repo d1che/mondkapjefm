@@ -33,7 +33,6 @@ const Announcement = styled.span`
   padding-right: 1rem;
   color: ${props => props.theme.colorAnnouncement};
   font-weight: bold;
-  border-right: 1px solid ${props => props.theme.colorPrimaryDark};
   text-shadow: .1rem .1rem ${props => props.theme.colorPrimaryLight};
 `;
 
@@ -42,6 +41,7 @@ const NowPlaying = styled.span`
   padding-left: 1rem;
   font-weight: bold;
   color: ${props => props.theme.colorNowPlaying};
+  border-left: 1px solid ${props => props.theme.colorPrimaryDark};
   text-shadow: .1rem .1rem ${props => props.theme.colorPrimaryDark};
 `;
 
@@ -96,13 +96,14 @@ const Slogan = styled.div`
 
 const Metadata = ({data}) => {
   if (!data.icestats.source.title.startsWith('Zet je radio')) {
-    const announcement = data.icestats.source.title.split('|')[0];
+    const [dj, playlist] = data.icestats.source.title.split('|')[0].split(';');
     const [artist, title] = data.icestats.source.title.split('|')[1].split('-'); 
     return(
       <MetadataWrapper>
         <NowPlayingWrapper>
-          <Announcement>{announcement.trim()}</Announcement>
-          <NowPlaying>Now playing:</NowPlaying>
+          <Announcement>{dj}</Announcement>
+          <NowPlaying>Now playing: </NowPlaying>
+          <Announcement>{playlist}</Announcement>
         </NowPlayingWrapper>
         <Artist>{artist}</Artist>
         <Title>{title}</Title>

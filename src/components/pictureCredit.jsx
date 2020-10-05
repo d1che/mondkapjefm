@@ -28,8 +28,10 @@ const CreditWrapper = styled.div`
 
 const PictureCredit = () => {
   return (
-    <CreditWrapper>Background by <a href="https://unsplash.com/@jakebradley" rel="noopener noreferrer" target="_blank">Jake Bradley</a> on <a href="https://unsplash.com/" rel="noopener noreferrer" target="_blank">Unsplash</a>
+    <CreditWrapper>Background by <a href="https://unsplash.com/@baitman" rel="noopener noreferrer" target="_blank">Dennis Buchner</a> on <a href="https://unsplash.com/" rel="noopener noreferrer" target="_blank">Unsplash</a>
     </CreditWrapper>
+    /*<CreditWrapper>Background by <a href="https://unsplash.com/@jakebradley" rel="noopener noreferrer" target="_blank">Jake Bradley</a> on <a href="https://unsplash.com/" rel="noopener noreferrer" target="_blank">Unsplash</a>
+    </CreditWrapper>*/
   );
 };
 

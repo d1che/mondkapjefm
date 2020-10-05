@@ -1,0 +1,6 @@
+todo:
+
+- Twitter API (for updating texts)
+- Spotify API (for album artwork)
+- Automatic 4 seasons theme
+- Update buttface (including sinterklaas and santa theme)

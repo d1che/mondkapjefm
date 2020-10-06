@@ -25,30 +25,32 @@ const getSeason = () => {
   let month = new Date().getMonth();
 
   if (month >= 2 && month < 5) {
-    return "spring";
+    return themes.spring;
   } else if (month >= 5 && month < 8) {
-    return "summer";
+    return themes.summer;
   } else if (month >= 8 && month < 10) {
-    return "autumn";
+    return themes.autumn;
   } else {
-    return "winter";
+    return themes.winter;
   };
 };
 
 const Layout = ({ children }) => {
 
+  let currentTheme = getSeason();
+
   return (
-    <ThemeProvider theme={themes.autumn}>
+    <ThemeProvider theme={currentTheme}>
       <React.Fragment>
         <GlobalStyle />
-        <FixedBackground/>
+        <FixedBackground theme={currentTheme}/>
         <SocialBar />
-        <PictureCredit />
-        <Container theme={themes.autumn}>
+        <PictureCredit theme={currentTheme}/>
+        <Container theme={currentTheme}>
           {children}
         </Container>
         <Logo />
-        <Footer theme={themes.autumn}/>
+        <Footer theme={currentTheme}/>
       </React.Fragment>
     </ThemeProvider>
   );

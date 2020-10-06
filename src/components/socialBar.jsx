@@ -10,7 +10,9 @@ const IconContainer = styled.div`
   padding-left: 1rem;
   padding-bottom: 1rem;
   padding-right: 1rem;
-  background: radial-gradient(${props => props.theme.colorBackgroundSocialBar} 30%, ${props => props.theme.colorPrimaryDark}00 70%);
+  background: radial-gradient(
+    ${props => props.theme.colorBackgroundSocialBar} 30%, 
+    #00000000 70%);
 
   a {
     transition: color .5s;
@@ -18,7 +20,7 @@ const IconContainer = styled.div`
   }
 
   a:hover {
-    color: ${props => props.theme.colorMediaButton};    
+    color: ${props => props.theme.colorPrimaryLight};
   }
 `;
 

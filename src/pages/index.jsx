@@ -10,21 +10,24 @@ import BoatText from '../components/boatText';
 
 const TitleContainer = styled.div`
   position: absolute;
-  left: 20rem;
-  bottom: 18rem;
-  width: 70%;
+  left: 16.5rem;
+  bottom: 14.5rem;
+  padding: 3.5rem;
   font-family: ${props => props.theme.secondaryFont};
   font-weight: 700;
   text-shadow: 2px 2px 1px ${props => props.theme.colorBackgroundDark};
+  background: radial-gradient(
+    ${props => props.theme.colorBackgroundLight}33 40%, 
+    ${props => props.theme.colorBackgroundDark}00 70%);
 
   @media only screen and (max-width: calc(${variables.screenWidth} + 400px)) {
     top: 22rem;
-    left: 4rem;
+    left: 0rem;
     bottom: unset;
   }
 
   @media only screen and (max-width: calc(${variables.screenWidth})) {
-    left: 2rem;
+    left: -2rem;
   }
 `;
 
@@ -32,7 +35,7 @@ const Title = styled.h1`
   color: ${props => props.theme.colorBackgroundDark};
   font-size: 5.5rem;
   letter-spacing: 0.1rem;
-  text-shadow: 4px 4px 1px ${props => props.theme.colorPrimaryLight};
+  text-shadow: 3px 3px 1px ${props => props.theme.colorPrimaryLight};
 
   @media only screen and (max-width: calc(${variables.screenWidth} + 400px)) {
     font-size: calc(3rem + 2vw);

@@ -6,7 +6,7 @@ const FixedBackground = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url(../img/autumn.jpg);
+  background-image: url(${props => props.theme.backgroundImage});
   background-position: 47% 0;
   background-attachment: fixed;
   z-index: -1;

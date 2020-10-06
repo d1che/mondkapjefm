@@ -59,7 +59,7 @@ const themes = {
     colorPrimaryDark: '#0088bb',
     colorBackgroundDark: '#020202',
     colorBackgroundLight: '#eee8ee',
-    colorBackgroundSocialBar: '#ecf4f7',
+    colorBackgroundSocialBar: '#ffffff',
     
     colorText: '#fdf0fd',
     colorTextError: '#dd850f', // Used when stream is offline (overlayed on diagonal stripes using primary colors)

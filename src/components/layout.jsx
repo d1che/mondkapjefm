@@ -38,6 +38,7 @@ const getSeason = () => {
 const Layout = ({ children }) => {
 
   let currentTheme = getSeason();
+  /*let currentTheme = themes.spring;*/
 
   return (
     <ThemeProvider theme={currentTheme}>

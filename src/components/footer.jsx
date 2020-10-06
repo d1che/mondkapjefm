@@ -31,7 +31,11 @@ const FooterContainer = styled.div`
   `};
   
   border-top: 1px solid ${props => props.theme.colorPrimaryDark};
-  backdrop-filter: blur(5px);
+  backdrop-filter: ${props => props.offline ? `
+    none
+  ` : `
+    blur(5px)
+  `};
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     height: ${variables.footerHeightMobile};
@@ -53,6 +57,16 @@ const Loading = styled.div`
   }
 `;
 
+const Glass = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: ${props => props.theme.colorText}44;
+  backdrop-filter: blur(2px);
+`;
+
 const Offline = styled.div`
   position: absolute;
   display: inline-block;
@@ -61,12 +75,10 @@ const Offline = styled.div`
   transform: translate(-50%);
   padding-left: .4rem;
   padding-right: .3rem;
-  background-color: ${props => props.theme.colorText}aa;
   font-size: 3rem;
   font-weight: 700;
   white-space: nowrap;
   color: ${props => props.theme.colorTextError};
-  box-shadow: 0 0 .5rem ${props => props.theme.colorText};
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     top: 3.5rem;
@@ -106,6 +118,7 @@ const Footer = (props) =>  {
   if (offline) {
     return (
       <FooterContainer offline>
+        <Glass />
         <Offline>
           Op dit moment is de stream offline.
         </Offline>

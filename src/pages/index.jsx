@@ -23,7 +23,7 @@ const TitleContainer = styled.div`
   @media only screen and (max-width: calc(${variables.screenWidth} + 400px)) {
     top: 22rem;
     left: 0rem;
-    bottom: unset;
+    //bottom: unset;
   }
 
   @media only screen and (max-width: calc(${variables.screenWidth})) {

@@ -1,14 +1,14 @@
 const themes = {
   winter: {
     // Colors
-    colorPrimaryLight: '#77aae3',
+    colorPrimaryLight: '#4499ff',
     colorPrimaryDark: '#1b3824',
     colorBackgroundDark: '#020202',
     colorBackgroundLight: '#eee8ee',
     colorBackgroundSocialBar: '#6398da',
     
     colorText: '#fdf0fd',
-    colorTextError: '#dd850f',
+    colorTextError: '#000000', // Used when stream is offline (overlayed on diagonal stripes using primary colors)
     colorTitle: '#eee8ee',
     colorAnnouncement: '#020202',
     colorNowPlaying: '#fdf0fd',
@@ -35,7 +35,7 @@ const themes = {
     colorBackgroundSocialBar: '#56c8fc',
     
     colorText: '#fdf0fd',
-    colorTextError: '#dd850f',
+    colorTextError: '#000000',
     colorTitle: '#eee8ee',
     colorAnnouncement: '#020202',
     colorNowPlaying: '#fdf0fd',
@@ -62,7 +62,7 @@ const themes = {
     colorBackgroundSocialBar: '#ffffff',
     
     colorText: '#fdf0fd',
-    colorTextError: '#dd850f', // Used when stream is offline (overlayed on diagonal stripes using primary colors)
+    colorTextError: '#000000',
     colorTitle: '#eee8ee',
     colorAnnouncement: '#020202',
     colorNowPlaying: '#fdf0fd',
@@ -89,7 +89,7 @@ const themes = {
     colorBackgroundSocialBar: '#ee5522',
     
     colorText: '#fdf0fd',
-    colorTextError: '#dd850f',
+    colorTextError: '#000000',
     colorTitle: '#eee8ee',
     colorAnnouncement: '#020202',
     colorNowPlaying: '#fdf0fd',

@@ -37,8 +37,8 @@ const getSeason = () => {
 
 const Layout = ({ children }) => {
 
-  /*let currentTheme = getSeason();*/
-  let currentTheme = themes.winter;
+  let currentTheme = getSeason();
+  /*let currentTheme = themes.winter;*/
 
   return (
     <ThemeProvider theme={currentTheme}>

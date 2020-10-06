@@ -95,9 +95,10 @@ const Slogan = styled.div`
 `;
 
 const Metadata = ({data}) => {
-  if (!data.icestats.source.title.startsWith('Zet je radio')) {
-    const [dj, playlist] = data.icestats.source.title.split('|')[0].split(';');
-    const [artist, title] = data.icestats.source.title.split('|')[1].split('-'); 
+  const info = data.icestats.source.title.toString();
+  if (info.startsWith('0')) {
+    const [dj, playlist] = info.substring(1).split('|')[0].split(';');
+    const [artist, title] = info.substring(1).split('|')[1].split('-');
     return(
       <MetadataWrapper>
         <NowPlayingWrapper>
@@ -116,7 +117,7 @@ const Metadata = ({data}) => {
           Mondkapje FM
         </Ident>
         <Slogan>
-          Zet je radio op 1.5 meter!
+          {info.startsWith('1') ? info.substring(1) : 'Zet je radio op 1.5 meter!'}
         </Slogan>
       </MetadataWrapper>
     )

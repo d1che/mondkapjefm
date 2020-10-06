@@ -50,7 +50,7 @@ const Layout = ({ children }) => {
         <Container theme={currentTheme}>
           {children}
         </Container>
-        <Logo />
+        <Logo theme={currentTheme}/>
         <Footer theme={currentTheme}/>
       </React.Fragment>
     </ThemeProvider>

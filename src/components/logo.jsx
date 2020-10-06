@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 
 import variables from '../styles/variables';
 
-import SvgLogo from './svg/svgLogo';
+import SummerLogo from './svg/SummerLogo';
 
 const SneezeAnimation = keyframes`
   50% {
@@ -25,10 +25,9 @@ const LogoContainer = styled.div`
 `;
 
 const Logo = () => {
-
   return (
     <LogoContainer>
-      <SvgLogo />
+      <SummerLogo />
     </LogoContainer>
   );
 };

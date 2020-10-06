@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SvgLogo(props) {
+function SummerLogo(props) {
   return (
     <svg
       id="logo_svg__Layer_1"
@@ -59,4 +59,4 @@ function SvgLogo(props) {
   );
 }
 
-export default SvgLogo;
+export default SummerLogo;

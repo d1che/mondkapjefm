@@ -36,6 +36,7 @@ module.exports = {
       'het wc-papier is op!',
       'hoesten, we have a problem!',
       'levitation bitchery',
+      'Wow, very nies!',
     ],
   },
 

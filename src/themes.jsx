@@ -24,7 +24,7 @@ const themes = {
     backgroundImage: '../img/winter.jpg',
     backgroundCreator: 'Kei',
     backgroundProfile: 'https://unsplash.com/@verkei',
-    titleHeight: '20rem', // Distance from top of document used for mobile view
+    titleHeight: '18rem', // Distance from top of document used for mobile view
   },
 
   spring: {
@@ -52,7 +52,7 @@ const themes = {
     backgroundImage: '../img/spring.jpg',
     backgroundCreator: 'Anisur Rahman',
     backgroundProfile: 'https://unsplash.com/@arjabedbd',
-    titleHeight: '20rem',
+    titleHeight: '30rem',
   },
 
   summer: {
@@ -108,7 +108,7 @@ const themes = {
     backgroundImage: '../img/autumn.jpg',
     backgroundCreator: 'Dennis Buchner',
     backgroundProfile: 'https://unsplash.com/@baitman',
-    titleHeight: '47rem',
+    titleHeight: '28rem',
   },
 };
 

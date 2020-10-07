@@ -5,6 +5,7 @@ import variables from '../styles/variables';
 
 import SummerLogo from './svg/SummerLogo';
 import AutumnLogo from './svg/AutumnLogo';
+import ChristmasLogo from './svg/ChristmasLogo';
 
 const SneezeAnimation = keyframes`
   50% {
@@ -26,6 +27,10 @@ const LogoContainer = styled.div`
 `;
 
 const PlaceLogo = (season) => {
+  
+  const date = new Date();
+  if (date.getMonth() === 11 && date.getDate() > 23) return <ChristmasLogo />;
+
   switch (season) {
     case "winter": 
       return <AutumnLogo />

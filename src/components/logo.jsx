@@ -4,6 +4,7 @@ import styled, { keyframes } from 'styled-components';
 import variables from '../styles/variables';
 
 import SummerLogo from './svg/SummerLogo';
+import AutumnLogo from './svg/AutumnLogo';
 
 const SneezeAnimation = keyframes`
   50% {
@@ -24,10 +25,25 @@ const LogoContainer = styled.div`
   }
 `;
 
-const Logo = () => {
+const PlaceLogo = (season) => {
+  switch (season) {
+    case "winter": 
+      return <AutumnLogo />
+    case "spring":
+      return <SummerLogo />
+    case "summer":
+      return <SummerLogo />
+    case "autumn":
+      return <AutumnLogo />
+    default:
+      return <SummerLogo />
+  };
+};
+
+const Logo = ({ season }) => {
   return (
     <LogoContainer>
-      <SummerLogo />
+      {PlaceLogo(season)}
     </LogoContainer>
   );
 };

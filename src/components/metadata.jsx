@@ -2,14 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 
 import variables from '../styles/variables';
+import Marquee from './marquee';
 
 const MetadataWrapper = styled.div`
   display: inline-block;
   position: absolute;
+  width: 40rem;
   top: 0;
   bottom: 0;
   left: 4rem;
   font-size: 2.4rem;
+  overflow: hidden;
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     font-size: calc(0.8rem + 1.1vw);
@@ -64,10 +67,6 @@ const Title = styled.div`
   font-style: italic;
   padding-top: .2rem;
   text-shadow: .1rem .1rem ${props => props.theme.colorPrimaryDark};
-
-  @media only screen and (max-width: ${variables.screenWidth}) {
-    word-wrap: break-word;
-  }
 `;
 
 const Ident = styled.div`
@@ -108,6 +107,7 @@ const Metadata = ({data}) => {
         </NowPlayingWrapper>
         <Artist>{artist}</Artist>
         <Title>{title}</Title>
+        <Marquee />
       </MetadataWrapper>
     );
   } else {

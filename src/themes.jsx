@@ -5,7 +5,7 @@ const themes = {
     colorPrimaryDark: '#1b3824',
     colorBackgroundDark: '#020202',
     colorBackgroundLight: '#eee8ee',
-    colorBackgroundSocialBar: '#6398da',
+    colorBackgroundSocialBar: '#6398da', // Background for social button
     
     colorText: '#fdf0fd',
     colorTextError: '#000000', // Used when stream is offline (overlayed on diagonal stripes using primary colors)
@@ -13,7 +13,7 @@ const themes = {
     colorAnnouncement: '#020202',
     colorNowPlaying: '#fdf0fd',
     colorSongTitle: '#fdf0fd',
-    colorBoatLine: '#fdf0fd',
+    colorQuoteLine: '#fdf0fd', // Color of line from quote
 
     // Typography
     primaryFont: "'DM Sans', sans-serif",
@@ -21,9 +21,10 @@ const themes = {
     fontSizeTitle: '3rem',
 
     // Misc
-    backgroundImage: "../img/winter.jpg",
-    backgroundCreator: "Kei",
-    backgroundProfile: "https://unsplash.com/@verkei",
+    backgroundImage: '../img/winter.jpg',
+    backgroundCreator: 'Kei',
+    backgroundProfile: 'https://unsplash.com/@verkei',
+    titleHeight: '20rem', // Distance from top of document used for mobile view
   },
 
   spring: {
@@ -48,9 +49,10 @@ const themes = {
     fontSizeTitle: '3rem',
 
     // Misc
-    backgroundImage: "../img/spring.jpg",
-    backgroundCreator: "Anisur Rahman",
-    backgroundProfile: "https://unsplash.com/@arjabedbd",
+    backgroundImage: '../img/spring.jpg',
+    backgroundCreator: 'Anisur Rahman',
+    backgroundProfile: 'https://unsplash.com/@arjabedbd',
+    titleHeight: '20rem',
   },
 
   summer: {
@@ -75,9 +77,10 @@ const themes = {
     fontSizeTitle: '3rem',
 
     // Misc
-    backgroundImage: "../img/summer.jpg",
-    backgroundCreator: "Jake Bradley",
-    backgroundProfile: "https://unsplash.com/@jakebradley",
+    backgroundImage: '../img/summer.jpg',
+    backgroundCreator: 'Jake Bradley',
+    backgroundProfile: 'https://unsplash.com/@jakebradley',
+    titleHeight: '20rem',
   },
 
   autumn: {
@@ -102,9 +105,10 @@ const themes = {
     fontSizeTitle: '3rem',
 
     // Misc
-    backgroundImage: "../img/autumn.jpg",
-    backgroundCreator: "Dennis Buchner",
-    backgroundProfile: "https://unsplash.com/@baitman",
+    backgroundImage: '../img/autumn.jpg',
+    backgroundCreator: 'Dennis Buchner',
+    backgroundProfile: 'https://unsplash.com/@baitman',
+    titleHeight: '47rem',
   },
 };
 

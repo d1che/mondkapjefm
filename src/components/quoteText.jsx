@@ -21,7 +21,7 @@ const Quote = styled.div`
   z-index -1;
 `;
 
-const BoatText = ({quote}) => {
+const QuoteText = ({quote}) => {
   return (
     <Quote>
       {quote}
@@ -29,4 +29,4 @@ const BoatText = ({quote}) => {
   );
 };
 
-export default BoatText;
+export default QuoteText;

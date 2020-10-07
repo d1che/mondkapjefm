@@ -3,3 +3,4 @@ todo:
 - Twitter API (for updating texts)
 - Spotify API (for album artwork)
 - Update buttface (including sinterklaas and santa theme)
+- Create announcement text

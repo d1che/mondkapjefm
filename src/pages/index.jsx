@@ -20,10 +20,14 @@ const TitleContainer = styled.div`
     ${props => props.theme.colorBackgroundLight}33 40%, 
     ${props => props.theme.colorBackgroundDark}00 70%);
 
+  @media only screen and (max-height: 600px) {
+    display: none;
+  }
+
   @media only screen and (max-width: calc(${variables.screenWidth} + 400px)) {
     top: 22rem;
     left: 0rem;
-    //bottom: unset;
+    bottom: unset;
   }
 
   @media only screen and (max-width: calc(${variables.screenWidth})) {

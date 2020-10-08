@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import variables from '../styles/variables';
-import Marquee from './marquee';
+//import Marquee from './marquee';
 
 const MetadataWrapper = styled.div`
   display: inline-block;
@@ -107,7 +107,6 @@ const Metadata = ({data}) => {
         </NowPlayingWrapper>
         <Artist>{artist}</Artist>
         <Title>{title}</Title>
-        <Marquee />
       </MetadataWrapper>
     );
   } else {

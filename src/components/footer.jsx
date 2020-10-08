@@ -6,7 +6,7 @@ import Loader from 'react-loader-spinner'
 import variables from '../styles/variables';
 
 import Metadata from './metadata';
-import Player from './player';
+import Player from './player/player';
 
 const FooterContainer = styled.div`
   position: absolute;

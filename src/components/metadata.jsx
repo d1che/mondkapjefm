@@ -7,12 +7,10 @@ import variables from '../styles/variables';
 const MetadataWrapper = styled.div`
   display: inline-block;
   position: absolute;
-  width: 40rem;
   top: 0;
   bottom: 0;
   left: 4rem;
   font-size: 2.4rem;
-  overflow: hidden;
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     font-size: calc(0.8rem + 1.1vw);

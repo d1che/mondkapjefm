@@ -106,9 +106,18 @@ const Player = ({ theme, onOnline }) => {
       </audio>
       <VolumeSlider
         initialValue={volume}
-        onVolumeChange={(event, newValue) => setVolume(newValue)}
-        onMute={(event) => setVolume(0)}
-        onDefaultVolume={(event) => setVolume(defaultVolume)}
+        onVolumeChange={(event, newValue) => {
+          setVolume(newValue);
+          player.current.volume = volume/100;
+        }}
+        onMute={(event) => {
+          setVolume(0);
+          player.current.volume = 0;
+        }}
+        onDefaultVolume={(event) => {
+          setVolume(defaultVolume);
+          player.current.volume = defaultVolume/100;
+        }}
       />
       {buffering && <StyledLoader
         type='Oval'

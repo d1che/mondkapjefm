@@ -20,27 +20,27 @@ const Volume = styled.span`
   }
 `;
 
-const VolumeSlider = (props) => {
+const VolumeSlider = ({ initialValue, onVolumeChange, onMute, onDefaultVolume }) => {
   return(
     <Volume>
       <InlineBlock
         style={{paddingLeft: '2rem'}}>
         <VolumeDown 
           style={{fontSize: '4rem'}} 
-          onClick={props.onMute} />
+          onClick={onMute} />
       </InlineBlock>
       <InlineBlock 
         style={{width: '150px', paddingLeft: '1rem', paddingRight: '1rem'}}>
         <Slider 
-          value={props.initialValue} 
-          onChange={props.onVolumeChange} 
+          value={initialValue}
+          onChange={onVolumeChange}
           aria-labelledby="continuous-slider" 
           style={{color: '#ffffff'}} />
       </InlineBlock>
       <InlineBlock>
         <VolumeUp 
           style={{fontSize: '4rem'}}
-          onClick={props.onDefaultVolume} />
+          onClick={onDefaultVolume} />
       </InlineBlock>
     </Volume>
   );

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { VolumeDown, VolumeUp } from '@material-ui/icons';
 import Slider from '@material-ui/core/Slider';
 
-import variables from '../../styles/variables';
+import variables from '../../../styles/variables';
 
 const InlineBlock = styled.span`
   display: inline-block;

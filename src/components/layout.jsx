@@ -9,7 +9,7 @@ import FixedBackground from './fixedBackground';
 import SocialBar from '../components/socialBar';
 import PictureCredit from './pictureCredit';
 import Logo from '../components/logo';
-import Footer from './footer';
+import Footer from './footer/footer';
 
 const Container = styled.div`
   padding: 4rem;
@@ -40,7 +40,7 @@ const Layout = ({ children }) => {
   //let season = "spring";
   let season = getSeason();
 
-  return (
+  return (  
     <ThemeProvider theme={themes[season]}>
       <React.Fragment>
         <GlobalStyle />

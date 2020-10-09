@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import variables from '../styles/variables';
+import variables from '../../../styles/variables';
 
 const Scroller = styled.div`
     white-space: nowrap;

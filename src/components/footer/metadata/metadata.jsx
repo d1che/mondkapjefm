@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import variables from '../styles/variables';
+import variables from '../../../styles/variables';
 //import Marquee from './marquee';
 
 const MetadataWrapper = styled.div`
@@ -91,7 +91,7 @@ const Slogan = styled.div`
   }
 `;
 
-const Metadata = ({data}) => {
+const getView = (data) => {
   const info = data.icestats.source.title.toString();
   if (info.startsWith('0')) {
     const [dj, playlist] = info.substring(1).split('|')[0].split(';');
@@ -118,6 +118,52 @@ const Metadata = ({data}) => {
         </Slogan>
       </MetadataWrapper>
     )
+  }
+};
+
+const Metadata = () => {
+  const [data, setData] = useState(null);
+  const timeout = useRef(0);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        'https://stream.mondkapjefm.nl:8443/status-json.xsl');
+      const json = await response.json();
+      // If this is the first run, set the data immediately
+      setTimeout(setData, timeout.current, json);
+    } catch(err) {
+      console.warn(err);
+    }
+  }
+
+  useEffect(() => {
+    //Get data immediately for the first time
+    fetchData().then();
+    timeout.current = 6000;
+    const dataFetch = setInterval(fetchData, 500);
+
+    return () => {
+      clearInterval(dataFetch);
+    }
+  }, []);
+
+  if (data != null &&
+     data.icestats != null && 
+     data.icestats.source != null &&
+     data.icestats.source.title !== 'empty') {
+    return getView(data);
+  } else {
+    return(
+      <MetadataWrapper>
+        <Ident>
+          Mondkapje FM
+        </Ident>
+        <Slogan>
+          Welkom terug!
+        </Slogan>
+      </MetadataWrapper>
+    );
   }
 };
 

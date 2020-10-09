@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 
-import variables from '../../styles/variables';
+import variables from '../../../styles/variables';
 
 const PlaybackButtonWrapper = styled.span`
   display: inline-block;

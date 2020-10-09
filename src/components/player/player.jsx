@@ -22,7 +22,7 @@ const PlayerContainer = styled.div`
 const StyledLoader = styled(Loader)`
   display: inline;
   position: absolute;
-  left: -10rem;
+  right: 4rem;
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     display: none;
@@ -31,37 +31,41 @@ const StyledLoader = styled(Loader)`
 
 const Player = ({theme}) => {
   const defaultVolume = 70;
-  const [playing, togglePlaying] = useState(false);
+  const [playback, setPlayback] = useState(true);
   const [volume, setVolume] = useState(defaultVolume);
 
-  const handleVolume = (event, newValue) => setVolume(newValue);
-  const handleMute = (event) => setVolume(0);
-  const handleDefaultVolume = (event) => setVolume(defaultVolume);
-  const handlePlayback = (event) => togglePlaying(!playing);
+  // Updated by ReactPlayer
+  const [buffering, setBuffering] = useState(false);
 
   return (
     <PlayerContainer>
       <ReactPlayer 
         url='https://stream.mondkapjefm.nl:8443/stream'
-        playing={playing} 
+        playing={playback} 
         volume={volume/100}
         width='0'
         height='0'
         playsinline
+        onPlay={() => setBuffering(true)}
+        onBuffer={() => setBuffering(true)}
+        onBufferEnd={() => setBuffering(false)}
+        onError={() => {
+          console.warn("Autoplay failed. (possibly due to privacy settings)");
+        }}
       />
-      {playing && <StyledLoader
-        type='Bars'
+      <VolumeSlider 
+        initialValue={volume}
+        onVolumeChange={(event, newValue) => setVolume(newValue)}
+        onMute={(event) => setVolume(0)}
+        onDefaultVolume={(event) => setVolume(defaultVolume)}/>
+      {buffering && <StyledLoader
+        type='Oval'
         color={theme.colorText}
         height={80}
         width={80} />}
-      <VolumeSlider 
-        initialValue={volume}
-        onVolumeChange={handleVolume}
-        onMute={handleMute}
-        onDefaultVolume={handleDefaultVolume}/>
       <PlaybackButton
-        playing={playing}
-        onPlayPause={handlePlayback}
+        playback={playback}
+        onPlayPause={(event) => setPlayback(!playback)}
       />
     </PlayerContainer>
   );

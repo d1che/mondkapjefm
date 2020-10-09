@@ -26,7 +26,7 @@ const PlaybackButton = (props) => {
     <PlaybackButtonWrapper
       onClick={props.onPlayPause}>
         {
-          props.playing ?
+          props.playback ?
             <PauseCircleFilledIcon style={{fontSize: '8rem'}} />
           :
             <PlayCircleFilledIcon style={{fontSize: '8rem'}}/>

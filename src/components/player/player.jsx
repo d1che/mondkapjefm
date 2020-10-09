@@ -25,7 +25,7 @@ const StyledLoader = styled(Loader)`
   right: 4rem;
 
   @media only screen and (max-width: ${variables.screenWidth}) {
-    display: none;
+    right: 2rem;
   }
 `;
 

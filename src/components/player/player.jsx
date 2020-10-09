@@ -31,7 +31,7 @@ const StyledLoader = styled(Loader)`
 
 const Player = ({theme}) => {
   const defaultVolume = 70;
-  const [playback, setPlayback] = useState(true);
+  const [playback, setPlayback] = useState(false);
   const [volume, setVolume] = useState(defaultVolume);
 
   // Updated by ReactPlayer

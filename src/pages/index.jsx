@@ -25,7 +25,7 @@ const TitleContainer = styled.div`
     bottom: 8rem;
   }
 
-  @media only screen and (max-width: calc(${variables.screenWidth} - 20rem)) {
+  @media only screen and (max-width: calc(${variables.screenWidth} - 200px)) {
     top: ${props => props.theme.titleHeight};
     left: -2rem;
     bottom: unset;

@@ -13,7 +13,7 @@ const MetadataWrapper = styled.div`
   font-size: 2.4rem;
 
   @media only screen and (max-width: ${variables.screenWidth}) {
-    font-size: calc(0.8rem + 1.1vw);
+    font-size: calc(1rem + 0.7vw);
     left: 2rem;
     padding-right 1rem;
   }
@@ -38,7 +38,7 @@ const NowPlayingWrapper = styled.div`
   }
 
   @media only screen and (max-width: ${variables.screenWidth}) {
-    font-size: calc(0.5rem + 1vw);
+    font-size: calc(.8rem + .6vw);
   }
 `;
 
@@ -81,7 +81,7 @@ const Artist = styled.div`
   }
 
   @media only screen and (max-width: ${variables.screenWidth}) {
-    margin-top: calc(2.7rem - 2vw);
+    margin-top: calc(2.6rem - 1.7vw);
     word-wrap: break-word;
   }
 `;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import variables from '../../styles/variables';
@@ -72,11 +72,41 @@ const Offline = styled.div`
 const Footer = ({ theme }) =>  {
   const [online, setOnline] = useState(true);
 
+  useEffect(() => {
+    const audio = new Audio();
+    audio.src = 'https://stream.mondkapjefm.nl:8443/stream';
+
+    let timeout;
+
+    const handleEvent = () => {
+      clearTimeout(timeout);
+    }
+
+    const checker = () => {
+      try {
+        timeout = setTimeout(setOnline, 9000, false);
+        audio.load();
+      } catch(err) {
+        console.warn("Can't load audio stream.");
+      }
+    };
+
+    audio.addEventListener('loadeddata', handleEvent);
+    const timer = setInterval(checker, 10000);
+
+    return () => {
+      audio.removeEventListener('loadeddata', handleEvent);
+      clearInterval(timer);
+      clearTimeout(timeout);
+    }
+
+  }, []);
+
   if (online) {
     return (
       <FooterContainer>
         <Metadata />
-        <Player theme={theme} onOnline={(status) => setOnline(status)}/>
+        <Player theme={theme}/>
       </FooterContainer>
     );
   } else {

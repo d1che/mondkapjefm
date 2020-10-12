@@ -125,19 +125,21 @@ const Metadata = () => {
   const [data, setData] = useState(null);
   const timeout = useRef(0);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(
-        'https://stream.mondkapjefm.nl:8443/status-json.xsl');
-      const json = await response.json();
-      // If this is the first run, set the data immediately
-      setTimeout(setData, timeout.current, json);
-    } catch(err) {
-      console.warn(err);
-    }
-  }
-
   useEffect(() => {
+    let delay;
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          'https://stream.mondkapjefm.nl:8443/status-json.xsl');
+        const json = await response.json();
+        // If this is the first run, set the data immediately
+        delay = setTimeout(setData, timeout.current, json);
+      } catch(err) {
+        console.warn("Can't load radio metadata.");
+      }
+    }
+
     //Get data immediately for the first time
     fetchData().then();
     timeout.current = 6000;
@@ -145,6 +147,7 @@ const Metadata = () => {
 
     return () => {
       clearInterval(dataFetch);
+      clearTimeout(delay);
     }
   }, []);
 

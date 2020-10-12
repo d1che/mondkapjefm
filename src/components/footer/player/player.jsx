@@ -28,13 +28,13 @@ const StyledLoader = styled(Loader)`
   }
 `;
 
-const Player = ({ theme, onOnline }) => {
+const Player = ({ theme , onConnection }) => {
   const defaultVolume = 70;
   const player = useRef(null);
   const [volume, setVolume] = useState(defaultVolume);
 
-  // Updated by ReactPlayer
-  const [playback, setPlayback] = useState(false);
+  // Updated by audio player
+  const [playback, setPlayback] = useState(0);
   const [buffering, setBuffering] = useState(false);
 
   // Handle event listeners
@@ -42,57 +42,36 @@ const Player = ({ theme, onOnline }) => {
     const p = player.current;
 
     // Event handlers
-    //const handleLoadedMetadata = (event) => console.log(event);
-    const handleCanPlay = (event) => {
-      //console.log(event);
-    };
     const handlePlay = (event) => {
-      //console.log(event);
-      setBuffering(true);
+      setPlayback(1);
     };
     const handlePlaying = (event) => {
-      //console.log(event);
-      setPlayback(true);
+      setPlayback(1);
       setBuffering(false);
     };
     const handlePause = (event) => {
-      //console.log(event);
-      setPlayback(false);
-    }
+      setPlayback(0);
+    };
     const handleWaiting = (event) => {
-      //console.log(event);
-      setPlayback(false);
+      setPlayback(2);
       setBuffering(true);
     };
-    const handleStalled = async (event) => {
-      //console.log(event);
-      onOnline(false);
-    };
-    //const handleSuspended = (event) => console.log(event);
-    //const handleTimeUpdate = (event) => console.log(event);
+    const handleError = (event) => console.warn(event);
 
-    //p.addEventListener('loadedmetadata', handleLoadedMetadata);
-    p.addEventListener('canplay', handleCanPlay);
     p.addEventListener('play', handlePlay);
     p.addEventListener('playing', handlePlaying);
     p.addEventListener('pause', handlePause);
     p.addEventListener('waiting', handleWaiting);
-    p.addEventListener('stalled', handleStalled);
-    //p.addEventListener('suspended', handleSuspended);
-    //p.addEventListener('timeupdate', handleTimeUpdate);
+    p.addEventListener('error', handleError);
 
     return () => {
-      //p.removeEventListener('loadedmetadata', handleLoadedMetadata);
-      p.removeEventListener('canplay', handleCanPlay);
       p.removeEventListener('play', handlePlay);
       p.removeEventListener('playing', handlePlaying);
       p.removeEventListener('pause', handlePause);
       p.removeEventListener('waiting', handleWaiting);
-      p.removeEventListener('stalled', handleStalled);
-      //p.removeEventListener('suspended', handleSuspended);
-      //p.removeEventListener('timeupdate', handleTimeUpdate);
+      p.removeEventListener('error', handleError);
     };
-  }, [onOnline]);
+  }, []);
 
   return (
     <PlayerContainer>

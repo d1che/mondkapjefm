@@ -21,16 +21,29 @@ const PlaybackButtonWrapper = styled.span`
   }
 `;
 
-const PlaybackButton = (props) => {
+const Placeholder = styled.span`
+  display: inline-block;
+  width: 8rem;
+  height: 8rem;
+`;
+
+const PlaybackButton = ({ onPlayPause, playback }) => {
+  let button;
+
+  if (playback === 0) {
+    button = <PlayCircleFilledIcon style={{fontSize: '8rem'}}/>
+  }
+  else if (playback === 1) {
+    button = <PauseCircleFilledIcon style={{fontSize: '8rem'}} />
+  }
+  else {
+    button = <Placeholder />
+  }
+
   return(
     <PlaybackButtonWrapper
-      onClick={props.onPlayPause}>
-        {
-          props.playback ?
-            <PauseCircleFilledIcon style={{fontSize: '8rem'}} />
-          :
-            <PlayCircleFilledIcon style={{fontSize: '8rem'}}/>
-        }
+      onClick={onPlayPause}>
+      {button}
     </PlaybackButtonWrapper>
   );
 };

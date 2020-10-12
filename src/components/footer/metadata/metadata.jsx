@@ -23,6 +23,19 @@ const NowPlayingWrapper = styled.div`
   padding-top: .5rem;
   margin-bottom: .1rem;
   font-size: 2rem;
+  opacity: 0;
+  animation-name: fadeInNowPlaying;
+  animation-duration: 1s;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+
+  @keyframes fadeInNowPlaying {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     font-size: calc(0.5rem + 1vw);
@@ -53,6 +66,19 @@ const Artist = styled.div`
   padding-bottom: .3rem;
   border-bottom: 1px solid ${props => props.theme.colorPrimaryDark};
   text-shadow: .1rem .1rem ${props => props.theme.colorPrimaryDark};
+  opacity: 0;
+  animation-name: fadeInArtist;
+  animation-duration: 1s;
+  animation-delay: .5s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+
+  @keyframes fadeInArtist {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     margin-top: calc(2.7rem - 2vw);
@@ -65,6 +91,19 @@ const Title = styled.div`
   font-style: italic;
   padding-top: .2rem;
   text-shadow: .1rem .1rem ${props => props.theme.colorPrimaryDark};
+  opacity: 0;
+  animation-name: fadeInTitle;
+  animation-duration: 1s;
+  animation-delay: .5s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+
+  @keyframes fadeInTitle {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 `;
 
 const Ident = styled.div`
@@ -73,6 +112,25 @@ const Ident = styled.div`
   font-weight: bold;
   color: ${props => props.theme.colorPrimaryDark};
   text-shadow: .1rem .1rem ${props => props.theme.colorBackgroundDark};
+  opacity: 0;
+  animation-name: slideInA;
+  animation-duration: 1s;
+  animation-delay: .7s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+
+  @keyframes slideInA {
+    0% { 
+      opacity: 0;
+      transform: scale(2);
+    }
+    100% { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     margin-top: 2rem;
@@ -84,6 +142,25 @@ const Slogan = styled.div`
   font-size: 2rem;
   color: ${props => props.theme.colorSongTitle};
   text-shadow: .1rem .1rem ${props => props.theme.colorPrimaryDark};
+  opacity: 0;
+  animation-name: slideInB;
+  animation-duration: 1s;
+  animation-delay: .7s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+
+  @keyframes slideInB {
+    0% { 
+      opacity: 0;
+      transform: scale(2);
+    }
+    100% { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     font-size: 1.5rem;

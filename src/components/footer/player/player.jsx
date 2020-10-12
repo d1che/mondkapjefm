@@ -12,6 +12,23 @@ const PlayerContainer = styled.div`
   position: absolute;
   right: 0;
   top: 23%;
+  opacity: 0;
+  animation-name: fadeInPlayer;
+  animation-duration: 1s;
+  animation-delay: 2s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+
+  @keyframes fadeInPlayer {
+    0% { 
+      opacity: 0;
+    }
+    100% { 
+      opacity: 1;
+    }
+  }
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     top: 11%;

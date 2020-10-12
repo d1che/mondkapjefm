@@ -38,8 +38,8 @@ const Title = styled.h1`
   letter-spacing: 0.1rem;
   text-shadow: 3px 3px 1px ${props => props.theme.colorPrimaryLight};
 
-  @media only screen and (max-width: calc(${variables.screenWidth} + 40rem)) {
-    font-size: calc(3.5rem + 1.2vw);
+  @media only screen and (max-width: ${variables.screenWidth}) {
+    font-size: 3.5rem;
   }
 `;
 
@@ -49,8 +49,8 @@ const Nutshell = styled.h2`
   letter-spacing: 0.1rem;
   word-wrap: normal;
 
-  @media only screen and (max-width: calc(${variables.screenWidth} + 40rem)) {
-    font-size: calc(1.95rem + .71vw);
+  @media only screen and (max-width: ${variables.screenWidth}) {
+    font-size: 1.95rem;
   }
 `;
 

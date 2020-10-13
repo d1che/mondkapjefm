@@ -1,25 +1,33 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import variables from '../../../styles/variables';
+const ScrollAnimation = keyframes`
+  0% { transform: translateX(0); }
+  50% {transform: translateX(-120%); }
+  100% { transform: translateX(-120%); }
+`;
 
-const Scroller = styled.div`
+const Scroller = styled.span`
+    display: inline-block;
     white-space: nowrap;
-    animation-name: scroll;
-    animation-duration: 8s;
+    animation-name: ${ScrollAnimation};
+    animation-duration: 10s;
+    animation-delay: 5s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 
-    @keyframes scroll {
-      0% { transform: translateX(0) };
-      100% { transform: translateX(-100%) };
+    &::after {
+      position: absolute;
+      display: inline-block;
+      content: ${props => `"${props.text}"`};
+      transform: translateX(20%);
     }
 `;
 
-const Marquee = ({ season }) => {
+const Marquee = ({ text }) => {
   return (
-    <Scroller>
-      Omg this text is immensely big, not n
+    <Scroller text={text}>
+      {text}
     </Scroller>
   );
 };

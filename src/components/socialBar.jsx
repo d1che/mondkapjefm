@@ -13,6 +13,14 @@ const IconContainer = styled.div`
   background: radial-gradient(
     ${props => props.theme.colorBackgroundSocialBar} 30%, 
     #00000000 70%);
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
 
   a {
     transition: color .5s;

@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
 import GlobalStyle from '../styles/globalStyle';
+import Animations from '../styles/animations';
 import themes from '../themes';
 import variables from '../styles/variables';
 
@@ -44,6 +45,7 @@ const Layout = ({ children }) => {
     <ThemeProvider theme={themes[season]}>
       <React.Fragment>
         <GlobalStyle />
+        <Animations />
         <FixedBackground theme={themes[season]}/>
         <SocialBar />
         <PictureCredit theme={themes[season]}/>

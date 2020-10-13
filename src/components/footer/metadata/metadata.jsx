@@ -2,43 +2,39 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import variables from '../../../styles/variables';
-//import Marquee from './marquee';
+import Marquee from './marquee';
 
 const MetadataWrapper = styled.div`
-  display: inline-block;
   position: absolute;
+  width: 50rem;
   top: 0;
   bottom: 0;
   left: 4rem;
   font-size: 2.4rem;
+  white-space: nowrap;
+  overflow:hidden;
 
   @media only screen and (max-width: ${variables.screenWidth}) {
-    font-size: calc(1rem + 0.7vw);
+    width: 28rem;
     left: 2rem;
     padding-right 1rem;
+    font-size: 1.5rem;
   }
 `;
 
 const NowPlayingWrapper = styled.div`
   padding-top: .5rem;
-  margin-bottom: .1rem;
   font-size: 2rem;
+
   opacity: 0;
-  animation-name: fadeInNowPlaying;
+  animation-name: fadeIn;
   animation-duration: 1s;
-  animation-delay: 0s;
-  animation-iteration-count: 1;
   animation-direction: normal;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
 
-  @keyframes fadeInNowPlaying {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-
   @media only screen and (max-width: ${variables.screenWidth}) {
-    font-size: calc(.8rem + .6vw);
+    font-size: 1.2rem;
   }
 `;
 
@@ -60,49 +56,49 @@ const NowPlaying = styled.span`
 `;
 
 const Artist = styled.div`
-  color: ${props => props.theme.colorSongTitle};
-  margin-top: 2rem;
-  font-weight: bold;
+  display: inline-block;
+  margin-top: 2.2rem;
   padding-bottom: .3rem;
-  border-bottom: 1px solid ${props => props.theme.colorPrimaryDark};
+  overflow: hidden;
+  font-weight: bold;
+  color: ${props => props.theme.colorSongTitle};
   text-shadow: .1rem .1rem ${props => props.theme.colorPrimaryDark};
+  border-bottom: 1px solid ${props => props.theme.colorPrimaryDark};
+  
   opacity: 0;
-  animation-name: fadeInArtist;
+  animation-name: fadeIn;
   animation-duration: 1s;
   animation-delay: .5s;
-  animation-iteration-count: 1;
   animation-direction: normal;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
 
-  @keyframes fadeInArtist {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-
   @media only screen and (max-width: ${variables.screenWidth}) {
-    margin-top: calc(2.6rem - 1.7vw);
-    word-wrap: break-word;
+    margin-top: 1.5rem;
   }
 `;
 
 const Title = styled.div`
-  color: ${props => props.theme.colorSongTitle};
-  font-style: italic;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 8.5rem;
   padding-top: .2rem;
+  overflow: hidden;
+  font-style: italic;
+  color: ${props => props.theme.colorSongTitle};
   text-shadow: .1rem .1rem ${props => props.theme.colorPrimaryDark};
+  
   opacity: 0;
-  animation-name: fadeInTitle;
+  animation-name: fadeIn;
   animation-duration: 1s;
   animation-delay: .5s;
-  animation-iteration-count: 1;
   animation-direction: normal;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
 
-  @keyframes fadeInTitle {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+  @media only screen and (max-width: ${variables.screenWidth}) {
+    top: 6rem;
   }
 `;
 
@@ -112,25 +108,14 @@ const Ident = styled.div`
   font-weight: bold;
   color: ${props => props.theme.colorPrimaryDark};
   text-shadow: .1rem .1rem ${props => props.theme.colorBackgroundDark};
+
   opacity: 0;
-  animation-name: slideInA;
+  animation-name: zoomOut;
   animation-duration: 1s;
   animation-delay: .7s;
-  animation-iteration-count: 1;
   animation-direction: normal;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
-
-  @keyframes slideInA {
-    0% { 
-      opacity: 0;
-      transform: scale(2);
-    }
-    100% { 
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     margin-top: 2rem;
@@ -142,25 +127,14 @@ const Slogan = styled.div`
   font-size: 2rem;
   color: ${props => props.theme.colorSongTitle};
   text-shadow: .1rem .1rem ${props => props.theme.colorPrimaryDark};
+
   opacity: 0;
-  animation-name: slideInB;
+  animation-name: zoomOut;
   animation-duration: 1s;
   animation-delay: .7s;
-  animation-iteration-count: 1;
   animation-direction: normal;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
-
-  @keyframes slideInB {
-    0% { 
-      opacity: 0;
-      transform: scale(2);
-    }
-    100% { 
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     font-size: 1.5rem;
@@ -168,20 +142,41 @@ const Slogan = styled.div`
   }
 `;
 
-const getView = (data) => {
+const getView = (data, wrapperRef, artistRef, titleRef) => {
+  let wrapperWidth = 0;
+  let artistWidth = 0;
+  let titleWidth = 0;
+  if (wrapperRef.current) wrapperWidth = wrapperRef.current.clientWidth;
+  if (artistRef.current) artistWidth = artistRef.current.clientWidth;
+  if (titleRef.current) titleWidth = titleRef.current.clientWidth;
+  
   const info = data.icestats.source.title.toString();
   if (info.startsWith('0')) {
     const [dj, playlist] = info.substring(1).split('|')[0].split(';');
     const [artist, title] = info.substring(1).split('|')[1].split('-');
     return(
-      <MetadataWrapper>
+      <MetadataWrapper ref={wrapperRef}>
         <NowPlayingWrapper>
           <Announcement>{dj}</Announcement>
           <NowPlaying>Now playing:</NowPlaying>
           <Announcement style={{paddingLeft: '1rem'}}>{playlist}</Announcement>
         </NowPlayingWrapper>
-        <Artist>{artist}</Artist>
-        <Title>{title}</Title>
+        <Artist ref={artistRef}>
+          {
+            artistWidth > wrapperWidth ?
+              <Marquee text={artist} />
+            : 
+              artist
+          }
+        </Artist>
+        <Title ref={titleRef}>
+          {
+            titleWidth > wrapperWidth ?
+              <Marquee text={title} />
+            : 
+              title
+          }
+        </Title>
       </MetadataWrapper>
     );
   } else {
@@ -201,6 +196,9 @@ const getView = (data) => {
 const Metadata = () => {
   const [data, setData] = useState(null);
   const timeout = useRef(0);
+  const wrapperRef = useRef(null);
+  const artistRef = useRef(null);
+  const titleRef = useRef(null);
 
   useEffect(() => {
     let delay;
@@ -232,7 +230,7 @@ const Metadata = () => {
      data.icestats != null && 
      data.icestats.source != null &&
      data.icestats.source.title !== 'empty') {
-    return getView(data);
+    return getView(data, wrapperRef, artistRef, titleRef);
   } else {
     return(
       <MetadataWrapper>

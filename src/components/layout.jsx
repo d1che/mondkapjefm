@@ -38,7 +38,7 @@ const getSeason = () => {
 
 const Layout = ({ children }) => {
 
-  //let season = "spring";
+  //let season = "winter";
   let season = getSeason();
 
   return (  

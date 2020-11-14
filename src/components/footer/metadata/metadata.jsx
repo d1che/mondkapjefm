@@ -12,7 +12,7 @@ const MetadataWrapper = styled.div`
   left: 4rem;
   font-size: 2.4rem;
   white-space: nowrap;
-  overflow:hidden;
+  overflow: hidden;
 
   @media only screen and (max-width: ${variables.screenWidth}) {
     width: 28rem;

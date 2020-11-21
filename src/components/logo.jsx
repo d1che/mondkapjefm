@@ -6,6 +6,7 @@ import variables from '../styles/variables';
 import SummerLogo from './svg/SummerLogo';
 import AutumnLogo from './svg/AutumnLogo';
 import ChristmasLogo from './svg/ChristmasLogo';
+import SinterklaasLogo from './svg/SinterklaasLogo';
 
 const LogoContainer = styled.div`
   position: absolute;
@@ -21,7 +22,11 @@ const LogoContainer = styled.div`
 const PlaceLogo = (season) => {
   
   const date = new Date();
-  if (date.getMonth() === 11 && date.getDate() > 23) return <ChristmasLogo />;
+  const month = date.getMonth();
+  const day = date.getDate();
+  if (month === 10 && day > 20) return <SinterklaasLogo />;
+  if (month === 11 && day < 6) return <SinterklaasLogo />;
+  if (month === 11 && day > 23) return <ChristmasLogo />;
 
   switch (season) {
     case "winter": 

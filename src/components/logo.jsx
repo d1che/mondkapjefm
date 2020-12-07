@@ -26,7 +26,7 @@ const PlaceLogo = (season) => {
   const day = date.getDate();
   if (month === 10 && day > 20) return <SinterklaasLogo />;
   if (month === 11 && day < 6) return <SinterklaasLogo />;
-  if (month === 11 && day > 23) return <ChristmasLogo />;
+  if (month === 11) return <ChristmasLogo />;
 
   switch (season) {
     case "winter": 

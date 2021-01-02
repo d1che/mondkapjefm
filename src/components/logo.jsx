@@ -22,13 +22,13 @@ const LogoContainer = styled.div`
 const PlaceLogo = (season) => {
 
   switch (season) {
-    case "winter": 
+    case 'winter': 
       return <AutumnLogo />
-    case "spring":
+    case 'spring':
       return <SummerLogo />
-    case "summer":
+    case 'summer':
       return <SummerLogo />
-    case "autumn":
+    case 'autumn':
       return <AutumnLogo />
     default:
       return <SummerLogo />

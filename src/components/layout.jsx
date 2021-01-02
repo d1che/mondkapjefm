@@ -38,8 +38,8 @@ const getSeason = () => {
 
 const Layout = ({ children }) => {
 
-  //let season = "winter";
-  let season = getSeason();
+  let season = "winter";
+  //let season = getSeason();
 
   return (  
     <ThemeProvider theme={themes[season]}>

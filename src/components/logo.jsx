@@ -20,13 +20,6 @@ const LogoContainer = styled.div`
 `;
 
 const PlaceLogo = (season) => {
-  
-  const date = new Date();
-  const month = date.getMonth();
-  const day = date.getDate();
-  if (month === 10 && day > 20) return <SinterklaasLogo />;
-  if (month === 11 && day < 6) return <SinterklaasLogo />;
-  if (month === 11) return <ChristmasLogo />;
 
   switch (season) {
     case "winter": 

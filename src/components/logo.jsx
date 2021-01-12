@@ -23,7 +23,7 @@ const PlaceLogo = (season) => {
 
   switch (season) {
     case 'winter': 
-      return <SummerLogo />
+      return <AutumnLogo />
     case 'spring':
       return <SummerLogo />
     case 'summer':

@@ -204,16 +204,28 @@ const Metadata = () => {
     let delay;
 
     const fetchData = async () => {
+      // Dummy data object, not intended for production
+      const json = {
+        "icestats": {
+          "source": {
+            "title": "0 DJ PeeCee;Weekendstream | The Champs - Tequila"
+          }
+        }
+      };
+
       try {
-        const response = await fetch(
-          'https://stream.mondkapjefm.nl:8443/status-json.xsl');
-        const json = await response.json();
+        // UNCOMMENT BEFORE GOING INTO PRODUCTION!
+        // const response = await fetch(
+        //   'https://stream.mondkapjefm.nl:8443/status-json.xsl');
+        // const json = await response.json();
         // If this is the first run, set the data immediately
         delay = setTimeout(setData, timeout.current, json);
       } catch(err) {
         console.warn("Can't load radio metadata.");
       }
     }
+
+
 
     //Get data immediately for the first time
     fetchData().then();

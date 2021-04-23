@@ -95,7 +95,7 @@ const Player = ({ theme , onConnection }) => {
       <audio ref={player}>
         <source
           autoPlay
-          src="https://stream.mondkapjefm.nl:8443/stream"
+          src="https://stream.hosting078.nl:8004/live"
           type="audio/mpeg"
         />
         <track kind="captions" srcLang="nl" label="dummy_track" />

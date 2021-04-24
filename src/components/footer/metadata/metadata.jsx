@@ -208,7 +208,7 @@ const Metadata = () => {
       const json = {
         "icestats": {
           "source": {
-            "title": "0 DJ PeeCee;Weekendstream | The Champs - Tequila"
+            "title": "0 DJ PeeCee;Weekendstream | Ketsa - Smooth Day"
           }
         }
       };

@@ -21,25 +21,22 @@ const Container = styled.div`
   }
 `;
 
-const getSeason = () => {
+const Layout = ({ children }) => {
+  let season = 'summer';
 
-  let month = new Date().getMonth();
+  const month = new Date().getMonth();
 
   if (month >= 2 && month < 5) {
-    return 'spring';
+    season = 'spring';
   } else if (month >= 5 && month < 8) {
-    return 'summer';
+    season = 'summer';
   } else if (month >= 8 && month < 10) {
-    return 'autumn';
+    season = 'autumn';
   } else {
-    return 'winter';
+    season = 'winter';
   };
-};
 
-const Layout = ({ children }) => {
-
-  //let season = 'winter';
-  let season = getSeason();
+  console.log('month: ', month);
 
   return (  
     <ThemeProvider theme={themes[season]}>

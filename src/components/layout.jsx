@@ -36,8 +36,6 @@ const Layout = ({ children }) => {
     season = 'winter';
   };
 
-  console.log('month: ', month);
-
   return (  
     <ThemeProvider theme={themes[season]}>
       <React.Fragment>
